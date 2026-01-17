@@ -1,0 +1,3727 @@
+{
+  "openapi": "3.0.0",
+  "components": {
+    "examples": {},
+    "headers": {},
+    "parameters": {},
+    "requestBodies": {},
+    "responses": {},
+    "schemas": {
+      "NotificationType": {
+        "enum": ["INFO", "WARNING", "SUCCESS", "ERROR"],
+        "type": "string"
+      },
+      "UserLoginType": { "enum": ["TRADITIONAL", "GOOGLE"], "type": "string" },
+      "UserRole": {
+        "enum": ["ADMIN", "CLIENT", "CONTRACTOR", "AGENT", "CONSULTANCY"],
+        "type": "string"
+      },
+      "MediaType": {
+        "enum": ["IMAGE", "VIDEO", "PDF", "DOCUMENT"],
+        "type": "string"
+      },
+      "MediaDocumentType": {
+        "enum": [
+          "CITIZENSHIP_FRONT",
+          "CITIZENSHIP_BACK",
+          "PASSPORT",
+          "PROFILE_IMAGE",
+          "COMPANY_REGISTRATION",
+          "TAX_REGISTRATION",
+          "COMPANY_LOGO",
+          "PERSONAL_LICENSE",
+          "INSURANCE_DOCUMENT",
+          "PROJECT_DOCUMENT",
+          "PORTFOLIO_PROJECT_PHOTO",
+          "BID_DOCUMENT"
+        ],
+        "type": "string"
+      },
+      "MediaEntityType": {
+        "enum": [
+          "PROJECT",
+          "CLIENT_PROFILE",
+          "CONTRACTOR_PROFILE",
+          "CONSULTANCY_PROFILE",
+          "CONTRACTOR_PORTFOLIO_PROJECT",
+          "CONSULTANCY_PORTFOLIO_PROJECT",
+          "BID"
+        ],
+        "type": "string"
+      },
+      "User": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "fullName": { "type": "string" },
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "phone": { "type": "string" },
+          "isVerified": { "type": "boolean" },
+          "loginType": { "$ref": "#/components/schemas/UserLoginType" },
+          "address": { "type": "string" },
+          "avatar": { "type": "string" },
+          "role": { "$ref": "#/components/schemas/UserRole" },
+          "profileImage": {
+            "$ref": "#/components/schemas/Media",
+            "description": "Relations"
+          },
+          "tokens": {
+            "items": { "$ref": "#/components/schemas/Token" },
+            "type": "array"
+          },
+          "logs": {
+            "items": { "$ref": "#/components/schemas/Log" },
+            "type": "array"
+          },
+          "projects": {
+            "items": { "$ref": "#/components/schemas/Project" },
+            "type": "array"
+          },
+          "accountVerifications": {
+            "items": { "$ref": "#/components/schemas/AccountVerification" },
+            "type": "array"
+          },
+          "clientProfile": { "$ref": "#/components/schemas/ClientProfile" },
+          "contractorProfile": {
+            "$ref": "#/components/schemas/ContractorProfile"
+          },
+          "designConsultancyProfile": {
+            "$ref": "#/components/schemas/DesignConsultancyProfile"
+          },
+          "agentProfile": { "$ref": "#/components/schemas/AgentProfile" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "fullName",
+          "email",
+          "password",
+          "role",
+          "logs",
+          "projects",
+          "accountVerifications",
+          "clientProfile",
+          "contractorProfile",
+          "designConsultancyProfile"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Media": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "mimeType": { "type": "string" },
+          "name": { "type": "string" },
+          "mediaType": { "$ref": "#/components/schemas/MediaType" },
+          "documentType": { "$ref": "#/components/schemas/MediaDocumentType" },
+          "entityType": { "$ref": "#/components/schemas/MediaEntityType" },
+          "entityId": { "type": "string" },
+          "originalFileName": { "type": "string" },
+          "url": { "type": "string" },
+          "user": { "$ref": "#/components/schemas/User" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "mimeType",
+          "name",
+          "mediaType",
+          "documentType",
+          "entityType",
+          "originalFileName",
+          "url",
+          "user"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TokenEnum": {
+        "enum": [
+          "ACCESS",
+          "REFRESH",
+          "FORGET_PASSWORD",
+          "VERIFY_EMAIL",
+          "CHANGE_PASSWORD_OTP"
+        ],
+        "type": "string"
+      },
+      "Token": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "tokenHash": { "type": "string" },
+          "type": { "$ref": "#/components/schemas/TokenEnum" },
+          "deviceId": { "type": "string" },
+          "ipHash": { "type": "string" },
+          "expiresAt": { "type": "string", "format": "date-time" },
+          "usedAt": { "type": "string", "format": "date-time" },
+          "revokedAt": { "type": "string", "format": "date-time" },
+          "user": { "$ref": "#/components/schemas/User" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "tokenHash",
+          "type",
+          "expiresAt"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "LogModule": {
+        "enum": [
+          "AUTH",
+          "USER",
+          "ADMIN",
+          "CONTRACTOR",
+          "CLIENT",
+          "AGENT",
+          "PROJECT",
+          "TASK",
+          "PAYMENT",
+          "NOTIFICATION",
+          "REPORT",
+          "SETTINGS",
+          "SYSTEM",
+          "OTHER"
+        ],
+        "type": "string"
+      },
+      "LogAction": {
+        "enum": [
+          "CREATE",
+          "READ",
+          "UPDATE",
+          "DELETE",
+          "LOGIN",
+          "LOGOUT",
+          "ACCESS",
+          "EXPORT",
+          "IMPORT",
+          "OTHER",
+          "EMAIL_VERIFIED_REQUEST",
+          "EMAIL_VERIFIED",
+          "EMAIL_VERIFICATION_OTP",
+          "FORGOT_PASSWORD",
+          "PASSWORD_RESET",
+          "PASSWORD_CHANGE"
+        ],
+        "type": "string"
+      },
+      "LogSeverity": {
+        "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+        "type": "string"
+      },
+      "ActorType": {
+        "enum": [
+          "CLIENT",
+          "CONTRACTOR",
+          "AGENT",
+          "ADMIN",
+          "SYSTEM",
+          "ANONYMOUS"
+        ],
+        "type": "string"
+      },
+      "Record_string.any_": {
+        "properties": {},
+        "additionalProperties": {},
+        "type": "object",
+        "description": "Construct a type with a set of properties K of type T"
+      },
+      "Log": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "module": { "$ref": "#/components/schemas/LogModule" },
+          "action": { "$ref": "#/components/schemas/LogAction" },
+          "severity": { "$ref": "#/components/schemas/LogSeverity" },
+          "actorType": { "$ref": "#/components/schemas/ActorType" },
+          "details": { "$ref": "#/components/schemas/Record_string.any_" },
+          "ipAddress": { "type": "string" },
+          "userAgent": { "type": "string" },
+          "resource": { "type": "string" },
+          "description": { "type": "string" },
+          "errorMessage": { "type": "string" },
+          "errorStack": { "type": "string" },
+          "user": { "$ref": "#/components/schemas/User" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "module",
+          "action",
+          "severity",
+          "actorType",
+          "details",
+          "ipAddress",
+          "userAgent",
+          "resource",
+          "description",
+          "errorMessage",
+          "errorStack",
+          "user"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Project": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "createdBy": { "$ref": "#/components/schemas/User" },
+          "awardedContractor": { "$ref": "#/components/schemas/User" },
+          "bids": {
+            "items": { "$ref": "#/components/schemas/Bids" },
+            "type": "array"
+          },
+          "projectDocuments": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "title": { "type": "string" },
+          "slug": { "type": "string" },
+          "description": { "type": "string" },
+          "category": { "type": "string" },
+          "location": { "type": "string" },
+          "budgetType": { "$ref": "#/components/schemas/ProjectBudgetType" },
+          "minimumBudget": { "type": "number", "format": "double" },
+          "maximumBudget": { "type": "number", "format": "double" },
+          "target": { "$ref": "#/components/schemas/ProjectTarget" },
+          "preferredStartDate": { "type": "string", "format": "date-time" },
+          "preferredEndDate": { "type": "string", "format": "date-time" },
+          "expiresAt": { "type": "string", "format": "date-time" },
+          "experienceLevel": {
+            "$ref": "#/components/schemas/ContractorExperienceLevel"
+          },
+          "similarProjectExperience": { "type": "string" },
+          "additionalRequirements": { "type": "string" },
+          "status": { "$ref": "#/components/schemas/ProjectStatus" },
+          "cancellationReason": { "type": "string" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "createdBy",
+          "bids",
+          "projectDocuments",
+          "title",
+          "slug",
+          "description",
+          "category",
+          "location",
+          "target",
+          "preferredStartDate",
+          "preferredEndDate",
+          "status"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ContractorProfile": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "user": { "$ref": "#/components/schemas/User" },
+          "companyName": { "type": "string" },
+          "yearsOfExperience": { "type": "number", "format": "double" },
+          "specializations": { "type": "string" },
+          "teamSize": { "type": "number", "format": "double" },
+          "isAvailable": { "type": "boolean" },
+          "companyDescription": { "type": "string" },
+          "serviceAreas": { "items": { "type": "string" }, "type": "array" },
+          "address": { "type": "string" },
+          "companyRegistrationCertificate": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "taxRegistrationCertificate": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "personalLicense": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "companyLogo": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "insuranceDocument": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "portfolioProjects": {
+            "items": { "$ref": "#/components/schemas/PortfolioProject" },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "user",
+          "companyName",
+          "specializations",
+          "teamSize",
+          "isAvailable",
+          "companyDescription",
+          "serviceAreas",
+          "companyRegistrationCertificate",
+          "taxRegistrationCertificate",
+          "personalLicense",
+          "companyLogo",
+          "insuranceDocument",
+          "portfolioProjects"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PortfolioProject": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "contractor": { "$ref": "#/components/schemas/ContractorProfile" },
+          "designConsultancy": {
+            "$ref": "#/components/schemas/DesignConsultancyProfile"
+          },
+          "projectPhotos": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "projectName": { "type": "string" },
+          "description": { "type": "string" },
+          "notableClients": { "type": "string" },
+          "averageProjectValue": { "type": "number", "format": "double" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "projectPhotos",
+          "projectName",
+          "description"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "DesignConsultancyProfile": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "user": { "$ref": "#/components/schemas/User" },
+          "companyName": { "type": "string" },
+          "yearsOfExperience": { "type": "number", "format": "double" },
+          "specializations": { "type": "string" },
+          "teamSize": { "type": "number", "format": "double" },
+          "companyDescription": { "type": "string" },
+          "serviceAreas": { "items": { "type": "string" }, "type": "array" },
+          "address": { "type": "string" },
+          "isAvailable": { "type": "boolean" },
+          "companyRegistrationCertificate": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "taxRegistrationCertificate": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "companyLogo": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          },
+          "portfolioProjects": {
+            "items": { "$ref": "#/components/schemas/PortfolioProject" },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "user",
+          "companyName",
+          "specializations",
+          "teamSize",
+          "companyDescription",
+          "serviceAreas",
+          "isAvailable",
+          "companyRegistrationCertificate",
+          "taxRegistrationCertificate",
+          "companyLogo",
+          "portfolioProjects"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "BidStatus": {
+        "enum": ["PENDING", "ACCEPTED", "REJECTED"],
+        "type": "string"
+      },
+      "Bids": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "title": { "type": "string" },
+          "project": { "$ref": "#/components/schemas/Project" },
+          "contractor": { "$ref": "#/components/schemas/ContractorProfile" },
+          "designConsultancy": {
+            "$ref": "#/components/schemas/DesignConsultancyProfile"
+          },
+          "cost": { "type": "number", "format": "double" },
+          "timelineDays": { "type": "number", "format": "double" },
+          "costType": { "type": "string" },
+          "proposal": { "type": "string" },
+          "status": { "$ref": "#/components/schemas/BidStatus" },
+          "rejectionReason": { "type": "string" },
+          "documents": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "title",
+          "project",
+          "cost",
+          "timelineDays",
+          "costType",
+          "status"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ProjectBudgetType": {
+        "enum": ["FIXED_PRICE", "HOURS_BASED", "MILESTONE_BASED"],
+        "type": "string"
+      },
+      "ProjectTarget": {
+        "enum": ["CONTRACTOR", "CONSULTANCY"],
+        "type": "string"
+      },
+      "ContractorExperienceLevel": {
+        "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED"],
+        "type": "string"
+      },
+      "ProjectStatus": {
+        "enum": [
+          "DRAFT",
+          "OPEN",
+          "BIDDING_CLOSED",
+          "IN_PROGRESS",
+          "COMPLETED",
+          "CANCELLED"
+        ],
+        "type": "string"
+      },
+      "UserVerificationStatus": {
+        "enum": ["PENDING", "VERIFIED", "REJECTED"],
+        "type": "string"
+      },
+      "AccountVerification": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "user": { "$ref": "#/components/schemas/User" },
+          "actionBy": { "$ref": "#/components/schemas/User" },
+          "status": { "$ref": "#/components/schemas/UserVerificationStatus" },
+          "comments": { "type": "string" },
+          "verifiedAt": { "type": "string", "format": "date-time" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "user",
+          "status"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ClientType": { "enum": ["INDIVIDUAL", "COMPANY"], "type": "string" },
+      "ClientProfile": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "user": { "$ref": "#/components/schemas/User" },
+          "clientType": {
+            "$ref": "#/components/schemas/ClientType",
+            "description": "Client type: Individual or Company"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Only for company clients"
+          },
+          "billingAddress": { "type": "string" },
+          "contactPerson": { "type": "string" },
+          "vatNumber": { "type": "string" },
+          "personalAddress": {
+            "type": "string",
+            "description": "Only for individual clients"
+          },
+          "extraData": {},
+          "citizenshipCertificate": {
+            "items": { "$ref": "#/components/schemas/Media" },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "user",
+          "clientType",
+          "citizenshipCertificate"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AgentProfile": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "user": {
+            "$ref": "#/components/schemas/User",
+            "description": "Link to user"
+          },
+          "hireDate": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "createdAt", "updatedAt", "deletedAt", "user"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Notification": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "title": { "type": "string" },
+          "message": { "type": "string" },
+          "type": { "$ref": "#/components/schemas/NotificationType" },
+          "isRead": { "type": "boolean" },
+          "recipient": { "$ref": "#/components/schemas/User" },
+          "recipientId": { "type": "string" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "title",
+          "message",
+          "type",
+          "isRead",
+          "recipient",
+          "recipientId"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PaginationInterface": {
+        "properties": {
+          "total": { "type": "number", "format": "double" },
+          "page": { "type": "number", "format": "double" },
+          "limit": { "type": "number", "format": "double" },
+          "totalPages": { "type": "number", "format": "double" }
+        },
+        "required": ["total", "page", "limit", "totalPages"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface__data-Notification-Array--count-number__": {
+        "properties": {
+          "data": {
+            "properties": {
+              "count": { "type": "number", "format": "double" },
+              "data": {
+                "items": { "$ref": "#/components/schemas/Notification" },
+                "type": "array"
+              }
+            },
+            "required": ["count", "data"],
+            "type": "object",
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface__count-number__": {
+        "properties": {
+          "data": {
+            "properties": { "count": { "type": "number", "format": "double" } },
+            "required": ["count"],
+            "type": "object",
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_Notification_": {
+        "properties": {
+          "data": {
+            "allOf": [{ "$ref": "#/components/schemas/Notification" }],
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_null_": {
+        "properties": {
+          "data": { "anyOf": [], "nullable": true },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "MediaResponseDto": {
+        "properties": {
+          "id": { "type": "string" },
+          "url": { "type": "string" },
+          "mediaType": { "$ref": "#/components/schemas/MediaType" },
+          "documentType": { "$ref": "#/components/schemas/MediaDocumentType" },
+          "entityType": { "$ref": "#/components/schemas/MediaEntityType" },
+          "entityId": { "type": "string" },
+          "originalFileName": { "type": "string" }
+        },
+        "required": [
+          "id",
+          "url",
+          "mediaType",
+          "documentType",
+          "entityType",
+          "entityId",
+          "originalFileName"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_MediaResponseDto_": {
+        "properties": {
+          "data": {
+            "allOf": [{ "$ref": "#/components/schemas/MediaResponseDto" }],
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_any_": {
+        "properties": {
+          "data": { "nullable": true },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_MediaResponseDto-Array_": {
+        "properties": {
+          "data": {
+            "items": { "$ref": "#/components/schemas/MediaResponseDto" },
+            "type": "array",
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "VerifyEmailDto": {
+        "properties": {
+          "email": { "type": "string" },
+          "otp": { "type": "string" }
+        },
+        "required": ["email", "otp"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResendOtpDto": {
+        "properties": { "email": { "type": "string" } },
+        "required": ["email"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UserLoginDto": {
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" }
+        },
+        "required": ["email", "password"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UserForgotPasswordDto": {
+        "properties": {
+          "email": { "type": "string" },
+          "role": { "$ref": "#/components/schemas/UserRole" }
+        },
+        "required": ["email", "role"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "NonAdminUserRole": {
+        "enum": ["CLIENT", "CONTRACTOR", "CONSULTANCY", "AGENT"],
+        "type": "string"
+      },
+      "UserResetPasswordDto": {
+        "properties": {
+          "otp": { "type": "string" },
+          "email": { "type": "string" },
+          "role": { "$ref": "#/components/schemas/NonAdminUserRole" },
+          "newPassword": { "type": "string" }
+        },
+        "required": ["otp", "email", "role", "newPassword"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ChangePasswordInitiateDto": {
+        "properties": { "oldPassword": { "type": "string" } },
+        "required": ["oldPassword"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ChangePasswordConfirmDto": {
+        "properties": {
+          "otp": { "type": "string" },
+          "newPassword": { "type": "string" }
+        },
+        "required": ["otp", "newPassword"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_any-Array_": {
+        "properties": {
+          "data": { "items": {}, "type": "array", "nullable": true },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "VerifyContractorDto": {
+        "properties": {
+          "reason": { "type": "string" },
+          "status": { "$ref": "#/components/schemas/UserVerificationStatus" },
+          "verificationId": { "type": "string" }
+        },
+        "required": ["reason", "status", "verificationId"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "VerifyClientDto": {
+        "properties": {
+          "reason": { "type": "string" },
+          "verificationId": { "type": "string" },
+          "status": { "$ref": "#/components/schemas/UserVerificationStatus" }
+        },
+        "required": ["reason", "verificationId", "status"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "VerifyDesignConsultancyDto": {
+        "properties": {
+          "reason": { "type": "string" },
+          "status": { "$ref": "#/components/schemas/UserVerificationStatus" },
+          "verificationId": { "type": "string" }
+        },
+        "required": ["reason", "status", "verificationId"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CreateProjectDto": {
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "categoryId": { "type": "string" },
+          "location": { "type": "string" },
+          "budgetType": { "$ref": "#/components/schemas/ProjectBudgetType" },
+          "minimumBudget": { "type": "number", "format": "double" },
+          "maximumBudget": { "type": "number", "format": "double" },
+          "preferredStartDate": { "type": "string" },
+          "preferredEndDate": { "type": "string" },
+          "startDate": { "type": "string" },
+          "endDate": { "type": "string" },
+          "status": { "$ref": "#/components/schemas/ProjectStatus" },
+          "slug": { "type": "string" },
+          "experienceLevel": {
+            "$ref": "#/components/schemas/ContractorExperienceLevel"
+          },
+          "similarProjectExperience": { "type": "string" },
+          "additionalRequirements": { "type": "string" },
+          "expiresAt": { "type": "string" },
+          "documents": { "items": { "type": "string" }, "type": "array" },
+          "target": { "$ref": "#/components/schemas/ProjectTarget" }
+        },
+        "required": [
+          "title",
+          "description",
+          "categoryId",
+          "location",
+          "budgetType",
+          "preferredStartDate",
+          "preferredEndDate",
+          "status",
+          "experienceLevel"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ProjectCategory": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "parentCategory": { "type": "string" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "name",
+          "slug"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UpdateProjectDto": {
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "category": { "$ref": "#/components/schemas/ProjectCategory" },
+          "subCategory": { "$ref": "#/components/schemas/ProjectCategory" },
+          "location": { "type": "string" },
+          "budgetType": { "$ref": "#/components/schemas/ProjectBudgetType" },
+          "minimumBudget": { "type": "number", "format": "double" },
+          "maximumBudget": { "type": "number", "format": "double" },
+          "preferredStartDate": { "type": "string" },
+          "preferredEndDate": { "type": "string" },
+          "startDate": { "type": "string" },
+          "endDate": { "type": "string" },
+          "expiresAt": { "type": "string" },
+          "experienceLevel": {
+            "$ref": "#/components/schemas/ContractorExperienceLevel"
+          },
+          "similarProjectExperience": { "type": "string" },
+          "additionalRequirements": { "type": "string" },
+          "documents": { "items": { "type": "string" }, "type": "array" }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CancelProjectDto": {
+        "properties": { "reason": { "type": "string" } },
+        "required": ["reason"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "SubmitBidDto": {
+        "properties": {
+          "projectId": { "type": "string" },
+          "cost": { "type": "number", "format": "double" },
+          "timelineDays": { "type": "number", "format": "double" },
+          "costType": { "type": "string" },
+          "proposal": { "type": "string" },
+          "documents": { "items": { "type": "string" }, "type": "array" }
+        },
+        "required": ["projectId", "cost", "timelineDays", "costType"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CreateProjectCategoryDto": {
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "parentCategory": { "type": "string" }
+        },
+        "required": ["name", "slug"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UpdateProjectCategoryDto": {
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "parentCategory": { "type": "string" }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "DesignConsultancyProfileDto": {
+        "properties": {
+          "companyName": { "type": "string" },
+          "yearsOfExperience": { "type": "number", "format": "double" },
+          "specializations": { "type": "string" },
+          "teamSize": { "type": "number", "format": "double" },
+          "companyDescription": { "type": "string" },
+          "serviceAreas": { "items": { "type": "string" }, "type": "array" },
+          "address": { "type": "string" },
+          "companyRegistrationCertificate": {
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "taxRegistrationCertificate": {
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "companyLogo": { "items": { "type": "string" }, "type": "array" }
+        },
+        "required": [
+          "companyName",
+          "yearsOfExperience",
+          "specializations",
+          "teamSize",
+          "companyDescription",
+          "serviceAreas",
+          "address",
+          "taxRegistrationCertificate",
+          "companyLogo"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "DesignConsultancySignupDto": {
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "phone": { "type": "string" },
+          "fullName": { "type": "string" },
+          "loginType": { "$ref": "#/components/schemas/UserLoginType" },
+          "details": {
+            "$ref": "#/components/schemas/DesignConsultancyProfileDto"
+          }
+        },
+        "required": ["email", "password", "fullName", "details"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UpdateDesignConsultancyProfileDto": {
+        "properties": {
+          "fullName": { "type": "string" },
+          "phone": { "type": "string" },
+          "details": {
+            "$ref": "#/components/schemas/DesignConsultancyProfileDto"
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PortfolioProjectDto": {
+        "properties": {
+          "projectName": { "type": "string" },
+          "description": { "type": "string" },
+          "notableClients": { "type": "string" },
+          "averageProjectValue": { "type": "number", "format": "double" },
+          "projectPhotos": { "items": { "type": "string" }, "type": "array" }
+        },
+        "required": ["projectName", "description"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ContractorProfileDto": {
+        "properties": {
+          "companyName": { "type": "string" },
+          "yearsOfExperience": { "type": "number", "format": "double" },
+          "specializations": { "type": "string" },
+          "teamSize": { "type": "number", "format": "double" },
+          "companyDescription": { "type": "string" },
+          "serviceAreas": { "items": { "type": "string" }, "type": "array" },
+          "address": { "type": "string" },
+          "companyRegistrationCertificate": {
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "taxRegistrationCertificate": {
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "personalLicense": { "items": { "type": "string" }, "type": "array" },
+          "companyLogo": { "items": { "type": "string" }, "type": "array" },
+          "insuranceDocument": {
+            "items": { "type": "string" },
+            "type": "array"
+          }
+        },
+        "required": [
+          "companyName",
+          "yearsOfExperience",
+          "specializations",
+          "teamSize",
+          "companyDescription",
+          "serviceAreas",
+          "address",
+          "taxRegistrationCertificate",
+          "personalLicense",
+          "companyLogo",
+          "insuranceDocument"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ContractorSignupDto": {
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "phone": { "type": "string" },
+          "fullName": { "type": "string" },
+          "loginType": { "$ref": "#/components/schemas/UserLoginType" },
+          "details": { "$ref": "#/components/schemas/ContractorProfileDto" }
+        },
+        "required": ["email", "password", "fullName", "details"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UpdateContractorProfileDto": {
+        "properties": {
+          "fullName": { "type": "string" },
+          "phone": { "type": "string" },
+          "details": { "$ref": "#/components/schemas/ContractorProfileDto" }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ClientProfileDto": {
+        "properties": {
+          "clientType": { "$ref": "#/components/schemas/ClientType" },
+          "companyName": { "type": "string" },
+          "billingAddress": { "type": "string" },
+          "contactPerson": { "type": "string" },
+          "vatNumber": { "type": "string" },
+          "personalAddress": { "type": "string" },
+          "extraData": {},
+          "citizenshipCertificates": {
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "companyDocuments": { "items": { "type": "string" }, "type": "array" }
+        },
+        "required": ["clientType"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ClientSignupDto": {
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "phone": { "type": "string" },
+          "fullName": { "type": "string" },
+          "loginType": { "$ref": "#/components/schemas/UserLoginType" },
+          "details": { "$ref": "#/components/schemas/ClientProfileDto" }
+        },
+        "required": ["email", "password", "fullName", "details"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UpdateClientProfileDto": {
+        "properties": {
+          "fullName": { "type": "string" },
+          "phone": { "type": "string" },
+          "details": { "$ref": "#/components/schemas/ClientProfileDto" }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ReviewDto": {
+        "properties": {
+          "contractorId": { "type": "string" },
+          "projectId": { "type": "string" },
+          "rating": { "type": "number", "format": "double" },
+          "comment": { "type": "string" }
+        },
+        "required": ["contractorId", "projectId", "rating"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_User_": {
+        "properties": {
+          "data": {
+            "allOf": [{ "$ref": "#/components/schemas/User" }],
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AgentProfileDto": {
+        "properties": {
+          "address": { "type": "string" },
+          "hireDate": { "type": "string", "format": "date-time" }
+        },
+        "required": ["address", "hireDate"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AgentSignupDto": {
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "phone": { "type": "string" },
+          "fullName": { "type": "string" },
+          "details": { "$ref": "#/components/schemas/AgentProfileDto" }
+        },
+        "required": ["email", "password", "phone", "fullName", "details"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_User-Array_": {
+        "properties": {
+          "data": {
+            "items": { "$ref": "#/components/schemas/User" },
+            "type": "array",
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_UpdateAgentProfileDto_": {
+        "properties": {
+          "fullName": { "type": "string" },
+          "address": { "type": "string" },
+          "hireDate": { "type": "string", "format": "date-time" }
+        },
+        "type": "object",
+        "description": "Make all properties in T optional"
+      },
+      "Blog": {
+        "properties": {
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" },
+          "title": { "type": "string" },
+          "slug": { "type": "string" },
+          "content": { "type": "string" },
+          "isPublished": { "type": "boolean" },
+          "author": { "$ref": "#/components/schemas/User" },
+          "authorId": { "type": "string" },
+          "featuredImage": { "$ref": "#/components/schemas/Media" },
+          "featuredImageId": { "type": "string" },
+          "category": { "type": "string" },
+          "tags": { "items": { "type": "string" }, "type": "array" }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "title",
+          "slug",
+          "content",
+          "isPublished",
+          "author",
+          "authorId"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_Blog-Array_": {
+        "properties": {
+          "data": {
+            "items": { "$ref": "#/components/schemas/Blog" },
+            "type": "array",
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ResponseInterface_Blog_": {
+        "properties": {
+          "data": {
+            "allOf": [{ "$ref": "#/components/schemas/Blog" }],
+            "nullable": true
+          },
+          "success": { "type": "boolean" },
+          "message": { "type": "string" },
+          "status": { "type": "string" },
+          "pagination": { "$ref": "#/components/schemas/PaginationInterface" }
+        },
+        "required": ["data", "success", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_Blog_": {
+        "properties": {
+          "title": { "type": "string" },
+          "slug": { "type": "string" },
+          "content": { "type": "string" },
+          "isPublished": { "type": "boolean" },
+          "author": { "$ref": "#/components/schemas/User" },
+          "authorId": { "type": "string" },
+          "featuredImage": { "$ref": "#/components/schemas/Media" },
+          "featuredImageId": { "type": "string" },
+          "category": { "type": "string" },
+          "tags": { "items": { "type": "string" }, "type": "array" },
+          "id": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "deletedAt": { "type": "string", "format": "date-time" }
+        },
+        "type": "object",
+        "description": "Make all properties in T optional"
+      }
+    },
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "access_token",
+        "description": "HttpOnly cookie containing the JWT access token. Set automatically on login."
+      }
+    }
+  },
+  "info": {
+    "title": "tradenotz-api",
+    "version": "1.0.0",
+    "license": { "name": "ISC" },
+    "contact": {}
+  },
+  "paths": {
+    "/api/v1/notifications": {
+      "get": {
+        "operationId": "GetUserNotifications",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface__data-Notification-Array--count-number__"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get user notifications",
+        "tags": ["Notifications"],
+        "security": [
+          {
+            "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT", "CONSULTANCY"]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "default": 1, "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "default": 30, "format": "double", "type": "number" }
+          }
+        ]
+      }
+    },
+    "/api/v1/notifications/unread-count": {
+      "get": {
+        "operationId": "GetUnreadCount",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface__count-number__"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get unread notification count",
+        "tags": ["Notifications"],
+        "security": [
+          {
+            "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT", "CONSULTANCY"]
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/api/v1/notifications/{id}/read": {
+      "patch": {
+        "operationId": "MarkAsRead",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_Notification_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Mark notification as read",
+        "tags": ["Notifications"],
+        "security": [
+          {
+            "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT", "CONSULTANCY"]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/notifications/read-all": {
+      "patch": {
+        "operationId": "MarkAllAsRead",
+        "responses": {
+          "200": {
+            "description": "All notifications marked as read",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Mark all notifications as read",
+        "tags": ["Notifications"],
+        "security": [
+          {
+            "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT", "CONSULTANCY"]
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/api/v1/media/upload": {
+      "post": {
+        "operationId": "UploadMedia",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_MediaResponseDto_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Upload a media file",
+        "tags": ["Media"],
+        "security": [{ "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT"] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": { "type": "string", "format": "binary" },
+                  "mediaType": { "type": "string" },
+                  "documentType": { "type": "string" },
+                  "entityType": { "type": "string" },
+                  "entityId": { "type": "string" }
+                },
+                "required": ["file", "mediaType", "documentType", "entityType"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/media/download/{id}": {
+      "get": {
+        "operationId": "DownloadMedia",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Media"],
+        "security": [{ "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/media": {
+      "get": {
+        "operationId": "GetAllMedia",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_MediaResponseDto-Array_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all media with pagination",
+        "tags": ["Media"],
+        "security": [{ "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT"] }],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "entityType",
+            "required": false,
+            "schema": { "$ref": "#/components/schemas/MediaEntityType" }
+          },
+          {
+            "in": "query",
+            "name": "entityId",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "default": 1, "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "default": 30, "format": "double", "type": "number" }
+          }
+        ]
+      }
+    },
+    "/api/v1/media/{id}": {
+      "get": {
+        "operationId": "GetMediaById",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_MediaResponseDto_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get media by ID",
+        "tags": ["Media"],
+        "security": [{ "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UpdateMedia",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_MediaResponseDto_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update media details",
+        "tags": ["Media"],
+        "security": [{ "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": { "name": { "type": "string" } },
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "DeleteMedia",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete media",
+        "tags": ["Media"],
+        "security": [{ "cookie": ["ADMIN", "AGENT", "CONTRACTOR", "CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/": {
+      "get": {
+        "operationId": "Root",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "env": { "type": "string" },
+                    "version": {},
+                    "uptime": { "type": "string" },
+                    "status": { "type": "string" }
+                  },
+                  "required": ["env", "version", "uptime", "status"],
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["System"],
+        "security": [],
+        "parameters": []
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "Health",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "time": { "type": "string" },
+                    "redis": { "type": "string" },
+                    "db": { "type": "string" },
+                    "env": { "type": "string" },
+                    "version": {},
+                    "uptime": { "type": "number", "format": "double" },
+                    "status": { "type": "string" }
+                  },
+                  "required": [
+                    "time",
+                    "redis",
+                    "db",
+                    "env",
+                    "version",
+                    "uptime",
+                    "status"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["System"],
+        "security": [],
+        "parameters": []
+      }
+    },
+    "/api/v1/auth/verify-email": {
+      "post": {
+        "operationId": "VerifyEmail",
+        "responses": {
+          "200": {
+            "description": "Verified",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Verify email with OTP",
+        "tags": ["Authentication"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/VerifyEmailDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/resend-otp": {
+      "post": {
+        "operationId": "ResendOtp",
+        "responses": {
+          "200": {
+            "description": "OTP Sent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Resend verification OTP",
+        "tags": ["Authentication"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ResendOtpDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "operationId": "Login",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": { "application/json": { "schema": {} } }
+          }
+        },
+        "description": "Login user",
+        "tags": ["Authentication"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserLoginDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "Logout",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Authentication"],
+        "security": [{ "cookie": [] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/auth/forgot-password": {
+      "post": {
+        "operationId": "ForgotPassword",
+        "responses": {
+          "200": {
+            "description": "Password reset OTP sent to your email",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Request forgot password link",
+        "tags": ["Authentication"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserForgotPasswordDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/reset-password": {
+      "post": {
+        "operationId": "ResetPassword",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Reset password with token",
+        "tags": ["Authentication"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserResetPasswordDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/change-password/initiate": {
+      "post": {
+        "operationId": "InitiateChangePassword",
+        "responses": {
+          "200": {
+            "description": "OTP Sent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Initiate change password - verifies old password and sends OTP",
+        "tags": ["Authentication"],
+        "security": [{ "cookie": [] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordInitiateDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/change-password/confirm": {
+      "post": {
+        "operationId": "ConfirmChangePassword",
+        "responses": {
+          "200": {
+            "description": "Password Changed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Confirm change password with OTP",
+        "tags": ["Authentication"],
+        "security": [{ "cookie": [] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordConfirmDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "GetMe",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get current user profile",
+        "tags": ["Authentication"],
+        "security": [{ "cookie": [] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/users/verifications/pending": {
+      "get": {
+        "operationId": "GetPendingVerifications",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get pending verifications",
+        "tags": ["User"],
+        "security": [{ "cookie": ["AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": { "$ref": "#/components/schemas/UserVerificationStatus" }
+          },
+          {
+            "in": "query",
+            "name": "role",
+            "required": false,
+            "schema": { "$ref": "#/components/schemas/UserRole" }
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{id}/verifications": {
+      "get": {
+        "operationId": "GetUserVerifications",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any-Array_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get user verification list",
+        "tags": ["User"],
+        "security": [
+          {
+            "cookie": ["AGENT", "ADMIN", "CLIENT", "CONTRACTOR", "CONSULTANCY"]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/users/contractors/{id}/verify": {
+      "post": {
+        "operationId": "VerifyContractor",
+        "responses": {
+          "200": {
+            "description": "Verified",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Verify contractor",
+        "tags": ["User"],
+        "security": [{ "cookie": ["AGENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/VerifyContractorDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/clients/{id}/verify": {
+      "post": {
+        "operationId": "VerifyClient",
+        "responses": {
+          "200": {
+            "description": "Verified",
+            "content": { "application/json": { "schema": {} } }
+          }
+        },
+        "description": "Verify client",
+        "tags": ["User"],
+        "security": [{ "cookie": ["AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/VerifyClientDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/consultancy/{id}/verify": {
+      "post": {
+        "operationId": "VerifyDesignConsultancy",
+        "responses": {
+          "200": {
+            "description": "Verified",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Verify design consultancy",
+        "tags": ["User"],
+        "security": [{ "cookie": ["AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyDesignConsultancyDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/projects": {
+      "post": {
+        "operationId": "CreateProject",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [{ "cookie": ["CLIENT"] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateProjectDto" }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "GetProjects",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [
+          {
+            "cookie": ["CLIENT", "AGENT", "ADMIN", "CONTRACTOR", "CONSULTANCY"]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": { "$ref": "#/components/schemas/ProjectStatus" }
+          },
+          {
+            "in": "query",
+            "name": "categoryId",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "default": 1, "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "default": 30, "format": "double", "type": "number" }
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{projectId}": {
+      "get": {
+        "operationId": "GetProjectDetails",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [
+          {
+            "cookie": ["CLIENT", "CONTRACTOR", "CONSULTANCY", "AGENT", "ADMIN"]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [{ "cookie": ["CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateProjectDto" }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "DeleteProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [{ "cookie": ["CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{projectId}/cancel": {
+      "put": {
+        "operationId": "CancelProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [{ "cookie": ["CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CancelProjectDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/projects/{projectId}/bids": {
+      "post": {
+        "operationId": "SubmitBid",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [{ "cookie": ["CONTRACTOR", "CONSULTANCY"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SubmitBidDto" }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "GetProjectBids",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [{ "cookie": ["AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "default": 1, "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "default": 30, "format": "double", "type": "number" }
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{projectId}/bids/{bidId}/select": {
+      "put": {
+        "operationId": "SelectBid",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [{ "cookie": ["AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "path",
+            "name": "bidId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{projectId}/participation-report": {
+      "get": {
+        "operationId": "GetParticipationReport",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": { "type": "string", "format": "byte" }
+              }
+            }
+          }
+        },
+        "tags": ["Projects"],
+        "security": [{ "cookie": ["AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/project-categories": {
+      "post": {
+        "operationId": "CreateCategory",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a new project category",
+        "tags": ["Project Categories"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectCategoryDto"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "GetAllCategories",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all project categories",
+        "tags": ["Project Categories"],
+        "security": [
+          {
+            "cookie": ["ADMIN", "AGENT", "CLIENT", "CONTRACTOR", "CONSULTANCY"]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "default": 1, "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "default": 30, "format": "double", "type": "number" }
+          }
+        ]
+      }
+    },
+    "/api/v1/project-categories/{parentCategoryid}/subcategories": {
+      "get": {
+        "operationId": "GetSubcategories",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get subcategories of a category by parent slug",
+        "tags": ["Project Categories"],
+        "security": [
+          {
+            "cookie": ["ADMIN", "AGENT", "CLIENT", "CONTRACTOR", "CONSULTANCY"]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "parentCategoryid",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "default": 1, "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "default": 30, "format": "double", "type": "number" }
+          }
+        ]
+      }
+    },
+    "/api/v1/project-categories/{id}": {
+      "get": {
+        "operationId": "GetCategory",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get project category by ID",
+        "tags": ["Project Categories"],
+        "security": [
+          {
+            "cookie": ["ADMIN", "AGENT", "CLIENT", "CONTRACTOR", "CONSULTANCY"]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "UpdateCategory",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update project category",
+        "tags": ["Project Categories"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectCategoryDto"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "DeleteCategory",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete project category",
+        "tags": ["Project Categories"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/design-consultancies/signup": {
+      "post": {
+        "operationId": "Signup",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Design Consultancy"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DesignConsultancySignupDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/design-consultancies/profile/{userId}": {
+      "get": {
+        "operationId": "GetProfile",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Design Consultancy"],
+        "security": [{ "cookie": ["CONSULTANCY", "ADMIN", "AGENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProfile",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Design Consultancy"],
+        "security": [{ "cookie": ["CONSULTANCY"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDesignConsultancyProfileDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/design-consultancies/dashboard/stats": {
+      "get": {
+        "operationId": "GetDashboardStats",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Dashboard",
+        "tags": ["Design Consultancy"],
+        "security": [{ "cookie": ["CONSULTANCY"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/design-consultancies/portfolio": {
+      "post": {
+        "operationId": "AddPortfolioProject",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Design Consultancy"],
+        "security": [{ "cookie": ["CONSULTANCY"] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PortfolioProjectDto" }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "GetPortfolioProjects",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Design Consultancy"],
+        "security": [{ "cookie": ["CONSULTANCY", "ADMIN", "AGENT"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/design-consultancies/portfolio/{projectId}": {
+      "delete": {
+        "operationId": "DeletePortfolioProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Design Consultancy"],
+        "security": [{ "cookie": ["CONSULTANCY"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/contractors/signup": {
+      "post": {
+        "operationId": "Signup",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Contractor"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ContractorSignupDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contractors/profile/{userId}": {
+      "get": {
+        "operationId": "GetProfile",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Contractor"],
+        "security": [{ "cookie": ["CONTRACTOR", "ADMIN", "AGENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProfile",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Contractor"],
+        "security": [{ "cookie": ["CONTRACTOR"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateContractorProfileDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contractors/portfolio": {
+      "post": {
+        "operationId": "AddPortfolioProject",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Portfolio Management",
+        "tags": ["Contractor"],
+        "security": [{ "cookie": ["CONTRACTOR"] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PortfolioProjectDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contractors/portfolio/{projectId}": {
+      "delete": {
+        "operationId": "DeletePortfolioProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Contractor"],
+        "security": [{ "cookie": ["CONTRACTOR"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/contractors/availability": {
+      "patch": {
+        "operationId": "ToggleAvailability",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Availability Toggle",
+        "tags": ["Contractor"],
+        "security": [{ "cookie": ["CONTRACTOR"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/contractors/dashboard/stats": {
+      "get": {
+        "operationId": "GetDashboardStats",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Dashboard",
+        "tags": ["Contractor"],
+        "security": [{ "cookie": ["CONTRACTOR"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/clients/signup": {
+      "post": {
+        "operationId": "Signup",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Client"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ClientSignupDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/clients/profile/{userId}": {
+      "get": {
+        "operationId": "GetProfile",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Client"],
+        "security": [{ "cookie": ["CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProfile",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Client"],
+        "security": [{ "cookie": ["CLIENT"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientProfileDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/clients/dashboard/stats": {
+      "get": {
+        "operationId": "GetDashboardStats",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Dashboard Analytics",
+        "tags": ["Client"],
+        "security": [{ "cookie": ["CLIENT"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/clients/review": {
+      "post": {
+        "operationId": "AddReview",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Reviews",
+        "tags": ["Client"],
+        "security": [{ "cookie": ["CLIENT"] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ReviewDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bids/{contractorId}": {
+      "get": {
+        "operationId": "GetBidsByContractor",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get bids by contractorId\n\nAccess:\n- Contractor\n- Agent\n- Admin",
+        "tags": ["Bids"],
+        "security": [{ "cookie": ["CONTRACTOR", "AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contractorId",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "default": 1, "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "default": 30, "format": "double", "type": "number" }
+          }
+        ]
+      }
+    },
+    "/api/v1/bids/reject/{bidId}": {
+      "post": {
+        "operationId": "RejectBid",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Bids"],
+        "security": [{ "cookie": ["AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "bidId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": { "reason": { "type": "string" } },
+                "required": ["reason"],
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agents/signup": {
+      "post": {
+        "operationId": "CreateAgent",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_User_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create agent (ADMIN only)",
+        "tags": ["Agent"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AgentSignupDto" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agents": {
+      "get": {
+        "operationId": "GetAgents",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_User-Array_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all agents (ADMIN only)",
+        "tags": ["Agent"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/agents/{agentId}": {
+      "get": {
+        "operationId": "GetAgent",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_User_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get agent by ID (ADMIN only)",
+        "tags": ["Agent"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "agentId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UpdateAgent",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_User_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update agent by ID (ADMIN only)",
+        "tags": ["Agent"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "agentId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_UpdateAgentProfileDto_"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "DeleteAgent",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete agent by ID (ADMIN only)",
+        "tags": ["Agent"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "agentId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/agents/{agentId}/profile": {
+      "get": {
+        "operationId": "GetProfile",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get agent profile\n\n- Agent → can access only own profile\n- Admin → can access any agent profile",
+        "tags": ["Agent"],
+        "security": [{ "cookie": ["AGENT", "ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "agentId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/agents/dashboard/stats": {
+      "get": {
+        "operationId": "GetDashboardStats",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get dashboard stats (AGENT only)",
+        "tags": ["Agent"],
+        "security": [{ "cookie": ["AGENT"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/admin/blogs": {
+      "get": {
+        "operationId": "GetBlogs",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_Blog-Array_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Admin Blog"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": { "format": "double", "type": "number" }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": { "format": "double", "type": "number" }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "CreateBlog",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_Blog_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Admin Blog"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Partial_Blog_" }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/blogs/{id}": {
+      "put": {
+        "operationId": "UpdateBlog",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_Blog_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Admin Blog"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Partial_Blog_" }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "DeleteBlog",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_null_"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Admin Blog"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/dashboard": {
+      "get": {
+        "operationId": "GetDashboard",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get platform dashboard statistics",
+        "tags": ["Admin"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/admin/analytics-overview": {
+      "get": {
+        "operationId": "GetAnalyticsOverview",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get platform analytics overview",
+        "tags": ["Admin"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": []
+      }
+    },
+    "/api/v1/admin/users": {
+      "get": {
+        "operationId": "GetAllUsers",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInterface_any-Array_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all users",
+        "tags": ["Admin"],
+        "security": [{ "cookie": ["ADMIN"] }],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "query",
+            "name": "role",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.tradenotz.com/api/v1",
+      "description": "prouduction server"
+    },
+    {
+      "url": "http://localhost:4500/api/v1",
+      "description": "Development server"
+    }
+  ]
+}
