@@ -45,11 +45,11 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-    // @ts-ignore
+  // @ts-ignore
   const { user: contextUser } = useRouteContext({
     from: "__root__",
   }) as RouteContextType;
-    // @ts-ignore
+  // @ts-ignore
   const { data: userData, error, isLoading: isLoadingUser } = useGetMe();
   const logoutMutation = useLogoutMutation();
 
@@ -244,8 +244,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               </SidebarGroup>
             </SidebarContent>
           </Sidebar>
-          <main className="flex-1">
-            <header className="flex h-16 items-center gap-4 border-b px-4 md:px-6">
+          <main className="flex-1 flex flex-col">
+            <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 md:px-6">
               <SidebarTrigger />
               <div className="flex-1">
                 <h1 className="text-lg font-semibold">{title}</h1>
@@ -351,22 +351,24 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 )}
               </div>
             </header>
-            {user && !(user as any).isAgentVerified && (
-              <div className="bg-amber-50 border-l-4 border-amber-500 p-4 m-4 md:mx-6 mb-0 flex items-start gap-3 shadow-sm rounded-r-md">
-                <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h3 className="text-amber-800 font-medium">
-                    Profile Verification Pending
-                  </h3>
-                  <p className="text-amber-700 text-sm mt-1">
-                    Your profile has not been verified by an agent yet. Some
-                    platform features may be limited until verification is
-                    complete.
-                  </p>
+            <div className="flex-1 overflow-auto">
+              {user && !(user as any).isAgentVerified && (
+                <div className="bg-amber-50 border-l-4 border-amber-500 p-4 m-4 md:mx-6 mb-0 flex items-start gap-3 shadow-sm rounded-r-md">
+                  <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="text-amber-800 font-medium">
+                      Profile Verification Pending
+                    </h3>
+                    <p className="text-amber-700 text-sm mt-1">
+                      Your profile has not been verified by an agent yet. Some
+                      platform features may be limited until verification is
+                      complete.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            )}
-            <div className="p-4 md:p-6">{children}</div>
+              )}
+              <div className="p-4 md:p-6">{children}</div>
+            </div>
           </main>
         </div>
       </SidebarProvider>

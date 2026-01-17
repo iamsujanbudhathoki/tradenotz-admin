@@ -4,12 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import { getAnalyticsOverviewOptions } from "@/api/@tanstack/react-query.gen";
 import {
   Users,
-  Briefcase,
-  Gavel,
-  ShieldAlert,
-  UserCheck,
-  Wrench,
-  Building2,
+  BookText,
+  FileText,
+  Eye,
+  CheckCircle,
+  Clock,
+  Activity,
 } from "lucide-react";
 import { Skeleton } from "@/ui/atoms/skeleton";
 import { useDashboard } from "@/hooks/useContext";
@@ -31,55 +31,58 @@ const AdminHomepage = () => {
     {
       title: "Total Users",
       value: analytics.totalUsers || 0,
-      description: "Registered platform users",
+      description: "Registered learners",
       icon: Users,
       color: "text-blue-600",
       bgColor: "bg-blue-100",
     },
     {
-      title: "Projects",
-      value: analytics.projects || 0,
-      description: "Total projects posted",
-      icon: Briefcase,
+      title: "Total Courses",
+      value: analytics.totalCourses || 0,
+      description: "Learning paths available",
+      icon: BookText,
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-100",
+    },
+    {
+      title: "Total Blogs",
+      value: analytics.totalBlogs || 0,
+      description: "Articles published",
+      icon: FileText,
       color: "text-purple-600",
       bgColor: "bg-purple-100",
     },
     {
-      title: "Total Bids",
-      value: analytics.bids || 0,
-      description: "Bids placed on projects",
-      icon: Gavel,
-      color: "text-orange-600",
-      bgColor: "bg-orange-100",
-    },
-    {
-      title: "Pending Reviews",
-      value: analytics.pendingVerifications || 0,
-      description: "Verifications awaiting action",
-      icon: ShieldAlert,
-      color: "text-red-600",
-      bgColor: "bg-red-100",
+      title: "Total Lessons",
+      value: analytics.totalLessons || 0,
+      description: "Course lessons created",
+      icon: Activity,
+      color: "text-cyan-600",
+      bgColor: "bg-cyan-100",
     },
   ];
 
-  const roleStats = [
+  const contentStats = [
     {
-      label: "Clients",
-      value: analytics.clients || 0,
-      icon: UserCheck,
-      color: "text-emerald-600",
+      label: "Published Content",
+      value: analytics.publishedContent || 0,
+      icon: CheckCircle,
+      color: "text-green-600",
+      description: "Live courses & blogs",
     },
     {
-      label: "Contractors",
-      value: analytics.contractors || 0,
-      icon: Wrench,
-      color: "text-indigo-600",
+      label: "Draft Content",
+      value: analytics.draftContent || 0,
+      icon: Clock,
+      color: "text-yellow-600",
+      description: "In progress",
     },
     {
-      label: "Consultants",
-      value: analytics.consultants || 0,
-      icon: Building2,
-      color: "text-cyan-600",
+      label: "Total Views",
+      value: analytics.totalViews || 0,
+      icon: Eye,
+      color: "text-blue-600",
+      description: "Content impressions",
     },
   ];
 
@@ -114,22 +117,25 @@ const AdminHomepage = () => {
       </div>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
-        {roleStats.map((role, index) => (
+        {contentStats.map((stat, index) => (
           <Card key={index} className="border border-border shadow-sm">
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
-                <div className={`${role.color} p-3 rounded-full bg-gray-50`}>
-                  <role.icon className="h-6 w-6" />
+                <div className={`${stat.color} p-3 rounded-full bg-gray-50`}>
+                  <stat.icon className="h-6 w-6" />
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className="text-sm font-medium text-muted-foreground">
-                    {role.label}
+                    {stat.label}
                   </p>
                   {isLoading ? (
                     <Skeleton className="h-7 w-12 mt-1" />
                   ) : (
-                    <h3 className="text-2xl font-bold">{role.value}</h3>
+                    <h3 className="text-2xl font-bold">{stat.value}</h3>
                   )}
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    {stat.description}
+                  </p>
                 </div>
               </div>
             </CardContent>
