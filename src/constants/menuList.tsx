@@ -1,7 +1,9 @@
 import {
+  BookOpen,
   FileText,
   LayoutDashboard,
-  Mail
+  Mail,
+  PlaySquare
 } from "lucide-react";
 
 export const menuList = [
@@ -12,20 +14,27 @@ export const menuList = [
   },
 
   {
+    label: "Courses",
+    icon: <PlaySquare />,
+    path: "/dashboard/courses",
+  },
+
+  {
+    label: "Blogs",
+    icon: <BookOpen />,
+    path: "/dashboard/blogs",
+  },
+
+  {
     label: "Reports",
     icon: <FileText />,
     path: "/dashboard/reports",
   },
 
- 
-  {
-    label: "Blogs",
-    icon: <FileText />,
-    path: "/dashboard/blogs",
-  },
   {
     label: "Contact Us",
     icon: <Mail />,
     path: "/dashboard/contact-us",
   },
 ];
+
