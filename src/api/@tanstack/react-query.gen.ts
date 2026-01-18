@@ -3,8 +3,8 @@
 import { type DefaultError, type InfiniteData, infiniteQueryOptions, queryOptions, type UseMutationOptions } from '@tanstack/react-query';
 
 import { client } from '../client.gen';
-import { addPortfolioProject, addPortfolioProject2, addReview, cancelProject, confirmChangePassword, confirmCompletion, createAgent, createBlog, createProject, deleteAgent, deleteBlog, deleteMedia, deleteMessage, deletePortfolioProject, deletePortfolioProject2, deleteProject, downloadMedia, forgotPassword, getAgent, getAgents, getAllMedia, getAllMessages, getAllUsers, getAnalyticsOverview, getBidsByContractor, getBlogBySlug, getBlogs, getContractorDashboardStats, getDashboard, getDashboardStats, getDashboardStats2, getDashboardStats3, getLogsByUserId, getMe, getMediaById, getMessageById, getMyBids, getMyLogs, getMyProjects, getParticipationReport, getPendingVerifications, getPortfolioProjects, getProfile, getProfile2, getProfile3, getProfile4, getProjectBids, getProjectBySlug, getProjectDetails, getProjects, getPublishedBlogs, getUnreadCount, getUserDetails, getUserNotifications, getUserReviews, getUserVerifications, health, initiateChangePassword, login, logout, markAllAsRead, markAsCompleted, markAsRead, type Options, refreshToken, rejectBid, removePhoto, removePhoto2, resendOtp, resetPassword, root, selectBid, signup, signup2, signup3, submitBid, submitContactForm, submitReview, toggleAvailability, updateAgent, updateBlog, updateMedia, updatePortfolioProject, updatePortfolioProject2, updateProfile, updateProfile2, updateProfile3, updateProject, updateProjectByAdmin, updateStatus, uploadMedia, verifyClient, verifyContractor, verifyDesignConsultancy, verifyEmail } from '../sdk.gen';
-import type { AddPortfolioProject2Data, AddPortfolioProject2Response, AddPortfolioProjectData, AddPortfolioProjectResponse, AddReviewData, AddReviewResponse, CancelProjectData, CancelProjectResponse, ConfirmChangePasswordData, ConfirmChangePasswordResponse, ConfirmCompletionData, ConfirmCompletionResponse, CreateAgentData, CreateAgentResponse, CreateBlogData, CreateBlogResponse, CreateProjectData, CreateProjectResponse, DeleteAgentData, DeleteAgentResponse, DeleteBlogData, DeleteBlogResponse, DeleteMediaData, DeleteMediaResponse, DeleteMessageData, DeleteMessageResponse, DeletePortfolioProject2Data, DeletePortfolioProject2Response, DeletePortfolioProjectData, DeletePortfolioProjectResponse, DeleteProjectData, DeleteProjectResponse, DownloadMediaData, DownloadMediaResponse, ForgotPasswordData, ForgotPasswordResponse, GetAgentData, GetAgentResponse, GetAgentsData, GetAgentsResponse, GetAllMediaData, GetAllMediaResponse, GetAllMessagesData, GetAllMessagesResponse, GetAllUsersData, GetAllUsersResponse, GetAnalyticsOverviewData, GetAnalyticsOverviewResponse, GetBidsByContractorData, GetBidsByContractorResponse, GetBlogBySlugData, GetBlogBySlugResponse, GetBlogsData, GetBlogsResponse, GetContractorDashboardStatsData, GetContractorDashboardStatsResponse, GetDashboardData, GetDashboardResponse, GetDashboardStats2Data, GetDashboardStats2Response, GetDashboardStats3Data, GetDashboardStats3Response, GetDashboardStatsData, GetDashboardStatsResponse, GetLogsByUserIdData, GetLogsByUserIdResponse, GetMeData, GetMediaByIdData, GetMediaByIdResponse, GetMeResponse, GetMessageByIdData, GetMessageByIdResponse, GetMyBidsData, GetMyBidsResponse, GetMyLogsData, GetMyLogsResponse, GetMyProjectsData, GetMyProjectsResponse, GetParticipationReportData, GetParticipationReportResponse, GetPendingVerificationsData, GetPendingVerificationsResponse, GetPortfolioProjectsData, GetPortfolioProjectsResponse, GetProfile2Data, GetProfile2Response, GetProfile3Data, GetProfile3Response, GetProfile4Data, GetProfile4Response, GetProfileData, GetProfileResponse, GetProjectBidsData, GetProjectBidsResponse, GetProjectBySlugData, GetProjectBySlugResponse, GetProjectDetailsData, GetProjectDetailsResponse, GetProjectsData, GetProjectsResponse, GetPublishedBlogsData, GetPublishedBlogsResponse, GetUnreadCountData, GetUnreadCountResponse, GetUserDetailsData, GetUserDetailsResponse, GetUserNotificationsData, GetUserNotificationsResponse, GetUserReviewsData, GetUserReviewsResponse, GetUserVerificationsData, GetUserVerificationsResponse, HealthData, HealthResponse, InitiateChangePasswordData, InitiateChangePasswordResponse, LoginData, LogoutData, LogoutResponse, MarkAllAsReadData, MarkAllAsReadResponse, MarkAsCompletedData, MarkAsCompletedResponse, MarkAsReadData, MarkAsReadResponse, RefreshTokenData, RefreshTokenResponse, RejectBidData, RejectBidResponse, RemovePhoto2Data, RemovePhoto2Response, RemovePhotoData, RemovePhotoResponse, ResendOtpData, ResendOtpResponse, ResetPasswordData, ResetPasswordResponse, RootData, RootResponse, SelectBidData, SelectBidResponse, Signup2Data, Signup2Response, Signup3Data, Signup3Response, SignupData, SignupResponse, SubmitBidData, SubmitBidResponse, SubmitContactFormData, SubmitContactFormResponse, SubmitReviewData, SubmitReviewResponse, ToggleAvailabilityData, ToggleAvailabilityResponse, UpdateAgentData, UpdateAgentResponse, UpdateBlogData, UpdateBlogResponse, UpdateMediaData, UpdateMediaResponse, UpdatePortfolioProject2Data, UpdatePortfolioProject2Response, UpdatePortfolioProjectData, UpdatePortfolioProjectResponse, UpdateProfile2Data, UpdateProfile2Response, UpdateProfile3Data, UpdateProfile3Response, UpdateProfileData, UpdateProfileResponse, UpdateProjectByAdminData, UpdateProjectByAdminResponse, UpdateProjectData, UpdateProjectResponse, UpdateStatusData, UpdateStatusResponse, UploadMediaData, UploadMediaResponse, VerifyClientData, VerifyContractorData, VerifyContractorResponse, VerifyDesignConsultancyData, VerifyDesignConsultancyResponse, VerifyEmailData, VerifyEmailResponse } from '../types.gen';
+import { createBlog, createCategory, createCourse, createTag, deleteBlog, deleteCategory, deleteCourse, deleteMedia, deleteMessage, deleteTag, getAllCategories, getAllCourses, getAllMedia, getAllMessages, getAllTags, getBlogBySlug, getCourseBySlug, getMe, getMessageById, getPublishedBlogs, health, login, logout, type Options, refreshToken, root, submitContactForm, updateBlog, updateCourse, updateStatus, uploadMedia } from '../sdk.gen';
+import type { CreateBlogData, CreateBlogResponse, CreateCategoryData, CreateCategoryResponse, CreateCourseData, CreateCourseResponse, CreateTagData, CreateTagResponse, DeleteBlogData, DeleteBlogResponse, DeleteCategoryData, DeleteCategoryResponse, DeleteCourseData, DeleteCourseResponse, DeleteMediaData, DeleteMediaResponse, DeleteMessageData, DeleteMessageResponse, DeleteTagData, DeleteTagResponse, GetAllCategoriesData, GetAllCategoriesResponse, GetAllCoursesData, GetAllCoursesResponse, GetAllMediaData, GetAllMediaResponse, GetAllMessagesData, GetAllMessagesResponse, GetAllTagsData, GetAllTagsResponse, GetBlogBySlugData, GetBlogBySlugResponse, GetCourseBySlugData, GetCourseBySlugResponse, GetMeData, GetMeResponse, GetMessageByIdData, GetMessageByIdResponse, GetPublishedBlogsData, GetPublishedBlogsResponse, HealthData, HealthResponse, LoginData, LogoutData, LogoutResponse, RefreshTokenData, RefreshTokenResponse, RootData, RootResponse, SubmitContactFormData, SubmitContactFormResponse, UpdateBlogData, UpdateBlogResponse, UpdateCourseData, UpdateCourseResponse, UpdateStatusData, UpdateStatusResponse, UploadMediaData, UploadMediaResponse } from '../types.gen';
 
 export type QueryKey<TOptions extends Options> = [
     Pick<TOptions, 'baseUrl' | 'body' | 'headers' | 'path' | 'query'> & {
@@ -39,14 +39,14 @@ const createQueryKey = <TOptions extends Options>(id: string, options?: TOptions
     return [params];
 };
 
-export const getUserNotificationsQueryKey = (options?: Options<GetUserNotificationsData>) => createQueryKey('getUserNotifications', options);
+export const getAllTagsQueryKey = (options?: Options<GetAllTagsData>) => createQueryKey('getAllTags', options);
 
 /**
- * Get user notifications
+ * Get all tags
  */
-export const getUserNotificationsOptions = (options?: Options<GetUserNotificationsData>) => queryOptions<GetUserNotificationsResponse, DefaultError, GetUserNotificationsResponse, ReturnType<typeof getUserNotificationsQueryKey>>({
+export const getAllTagsOptions = (options?: Options<GetAllTagsData>) => queryOptions<GetAllTagsResponse, DefaultError, GetAllTagsResponse, ReturnType<typeof getAllTagsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getUserNotifications({
+        const { data } = await getAllTags({
             ...options,
             ...queryKey[0],
             signal,
@@ -54,7 +54,76 @@ export const getUserNotificationsOptions = (options?: Options<GetUserNotificatio
         });
         return data;
     },
-    queryKey: getUserNotificationsQueryKey(options)
+    queryKey: getAllTagsQueryKey(options)
+});
+
+/**
+ * Create a new tag
+ */
+export const createTagMutation = (options?: Partial<Options<CreateTagData>>): UseMutationOptions<CreateTagResponse, DefaultError, Options<CreateTagData>> => {
+    const mutationOptions: UseMutationOptions<CreateTagResponse, DefaultError, Options<CreateTagData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createTag({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Delete a tag
+ */
+export const deleteTagMutation = (options?: Partial<Options<DeleteTagData>>): UseMutationOptions<DeleteTagResponse, DefaultError, Options<DeleteTagData>> => {
+    const mutationOptions: UseMutationOptions<DeleteTagResponse, DefaultError, Options<DeleteTagData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteTag({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Upload media file
+ */
+export const uploadMediaMutation = (options?: Partial<Options<UploadMediaData>>): UseMutationOptions<UploadMediaResponse, DefaultError, Options<UploadMediaData>> => {
+    const mutationOptions: UseMutationOptions<UploadMediaResponse, DefaultError, Options<UploadMediaData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await uploadMedia({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getAllMediaQueryKey = (options?: Options<GetAllMediaData>) => createQueryKey('getAllMedia', options);
+
+/**
+ * Get all media for the current user
+ */
+export const getAllMediaOptions = (options?: Options<GetAllMediaData>) => queryOptions<GetAllMediaResponse, DefaultError, GetAllMediaResponse, ReturnType<typeof getAllMediaQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getAllMedia({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getAllMediaQueryKey(options)
 });
 
 const createInfiniteParams = <K extends Pick<QueryKey<Options>[0], 'body' | 'headers' | 'path' | 'query'>>(queryKey: QueryKey<Options>, page: K) => {
@@ -86,139 +155,10 @@ const createInfiniteParams = <K extends Pick<QueryKey<Options>[0], 'body' | 'hea
     return params as unknown as typeof page;
 };
 
-export const getUserNotificationsInfiniteQueryKey = (options?: Options<GetUserNotificationsData>): QueryKey<Options<GetUserNotificationsData>> => createQueryKey('getUserNotifications', options, true);
-
-/**
- * Get user notifications
- */
-export const getUserNotificationsInfiniteOptions = (options?: Options<GetUserNotificationsData>) => infiniteQueryOptions<GetUserNotificationsResponse, DefaultError, InfiniteData<GetUserNotificationsResponse>, QueryKey<Options<GetUserNotificationsData>>, number | Pick<QueryKey<Options<GetUserNotificationsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetUserNotificationsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getUserNotifications({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getUserNotificationsInfiniteQueryKey(options)
-});
-
-export const getUnreadCountQueryKey = (options?: Options<GetUnreadCountData>) => createQueryKey('getUnreadCount', options);
-
-/**
- * Get unread notification count
- */
-export const getUnreadCountOptions = (options?: Options<GetUnreadCountData>) => queryOptions<GetUnreadCountResponse, DefaultError, GetUnreadCountResponse, ReturnType<typeof getUnreadCountQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getUnreadCount({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getUnreadCountQueryKey(options)
-});
-
-/**
- * Mark notification as read
- */
-export const markAsReadMutation = (options?: Partial<Options<MarkAsReadData>>): UseMutationOptions<MarkAsReadResponse, DefaultError, Options<MarkAsReadData>> => {
-    const mutationOptions: UseMutationOptions<MarkAsReadResponse, DefaultError, Options<MarkAsReadData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await markAsRead({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Mark all notifications as read
- */
-export const markAllAsReadMutation = (options?: Partial<Options<MarkAllAsReadData>>): UseMutationOptions<MarkAllAsReadResponse, DefaultError, Options<MarkAllAsReadData>> => {
-    const mutationOptions: UseMutationOptions<MarkAllAsReadResponse, DefaultError, Options<MarkAllAsReadData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await markAllAsRead({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Upload a media file
- */
-export const uploadMediaMutation = (options?: Partial<Options<UploadMediaData>>): UseMutationOptions<UploadMediaResponse, DefaultError, Options<UploadMediaData>> => {
-    const mutationOptions: UseMutationOptions<UploadMediaResponse, DefaultError, Options<UploadMediaData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await uploadMedia({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const downloadMediaQueryKey = (options: Options<DownloadMediaData>) => createQueryKey('downloadMedia', options);
-
-export const downloadMediaOptions = (options: Options<DownloadMediaData>) => queryOptions<DownloadMediaResponse, DefaultError, DownloadMediaResponse, ReturnType<typeof downloadMediaQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await downloadMedia({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: downloadMediaQueryKey(options)
-});
-
-export const getAllMediaQueryKey = (options?: Options<GetAllMediaData>) => createQueryKey('getAllMedia', options);
-
-/**
- * Get all media with pagination
- */
-export const getAllMediaOptions = (options?: Options<GetAllMediaData>) => queryOptions<GetAllMediaResponse, DefaultError, GetAllMediaResponse, ReturnType<typeof getAllMediaQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getAllMedia({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getAllMediaQueryKey(options)
-});
-
 export const getAllMediaInfiniteQueryKey = (options?: Options<GetAllMediaData>): QueryKey<Options<GetAllMediaData>> => createQueryKey('getAllMedia', options, true);
 
 /**
- * Get all media with pagination
+ * Get all media for the current user
  */
 export const getAllMediaInfiniteOptions = (options?: Options<GetAllMediaData>) => infiniteQueryOptions<GetAllMediaResponse, DefaultError, InfiniteData<GetAllMediaResponse>, QueryKey<Options<GetAllMediaData>>, number | Pick<QueryKey<Options<GetAllMediaData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
@@ -243,7 +183,7 @@ export const getAllMediaInfiniteOptions = (options?: Options<GetAllMediaData>) =
 });
 
 /**
- * Delete media
+ * Delete media by ID
  */
 export const deleteMediaMutation = (options?: Partial<Options<DeleteMediaData>>): UseMutationOptions<DeleteMediaResponse, DefaultError, Options<DeleteMediaData>> => {
     const mutationOptions: UseMutationOptions<DeleteMediaResponse, DefaultError, Options<DeleteMediaData>> = {
@@ -258,131 +198,6 @@ export const deleteMediaMutation = (options?: Partial<Options<DeleteMediaData>>)
     };
     return mutationOptions;
 };
-
-export const getMediaByIdQueryKey = (options: Options<GetMediaByIdData>) => createQueryKey('getMediaById', options);
-
-/**
- * Get media by ID
- */
-export const getMediaByIdOptions = (options: Options<GetMediaByIdData>) => queryOptions<GetMediaByIdResponse, DefaultError, GetMediaByIdResponse, ReturnType<typeof getMediaByIdQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getMediaById({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getMediaByIdQueryKey(options)
-});
-
-/**
- * Update media details
- */
-export const updateMediaMutation = (options?: Partial<Options<UpdateMediaData>>): UseMutationOptions<UpdateMediaResponse, DefaultError, Options<UpdateMediaData>> => {
-    const mutationOptions: UseMutationOptions<UpdateMediaResponse, DefaultError, Options<UpdateMediaData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updateMedia({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getMyLogsQueryKey = (options?: Options<GetMyLogsData>) => createQueryKey('getMyLogs', options);
-
-/**
- * Get logs for the authenticated user
- */
-export const getMyLogsOptions = (options?: Options<GetMyLogsData>) => queryOptions<GetMyLogsResponse, DefaultError, GetMyLogsResponse, ReturnType<typeof getMyLogsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getMyLogs({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getMyLogsQueryKey(options)
-});
-
-export const getMyLogsInfiniteQueryKey = (options?: Options<GetMyLogsData>): QueryKey<Options<GetMyLogsData>> => createQueryKey('getMyLogs', options, true);
-
-/**
- * Get logs for the authenticated user
- */
-export const getMyLogsInfiniteOptions = (options?: Options<GetMyLogsData>) => infiniteQueryOptions<GetMyLogsResponse, DefaultError, InfiniteData<GetMyLogsResponse>, QueryKey<Options<GetMyLogsData>>, number | Pick<QueryKey<Options<GetMyLogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetMyLogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getMyLogs({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getMyLogsInfiniteQueryKey(options)
-});
-
-export const getLogsByUserIdQueryKey = (options: Options<GetLogsByUserIdData>) => createQueryKey('getLogsByUserId', options);
-
-/**
- * Get logs by user ID (Admin only)
- */
-export const getLogsByUserIdOptions = (options: Options<GetLogsByUserIdData>) => queryOptions<GetLogsByUserIdResponse, DefaultError, GetLogsByUserIdResponse, ReturnType<typeof getLogsByUserIdQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getLogsByUserId({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getLogsByUserIdQueryKey(options)
-});
-
-export const getLogsByUserIdInfiniteQueryKey = (options: Options<GetLogsByUserIdData>): QueryKey<Options<GetLogsByUserIdData>> => createQueryKey('getLogsByUserId', options, true);
-
-/**
- * Get logs by user ID (Admin only)
- */
-export const getLogsByUserIdInfiniteOptions = (options: Options<GetLogsByUserIdData>) => infiniteQueryOptions<GetLogsByUserIdResponse, DefaultError, InfiniteData<GetLogsByUserIdResponse>, QueryKey<Options<GetLogsByUserIdData>>, number | Pick<QueryKey<Options<GetLogsByUserIdData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetLogsByUserIdData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getLogsByUserId({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getLogsByUserIdInfiniteQueryKey(options)
-});
 
 export const rootQueryKey = (options?: Options<RootData>) => createQueryKey('root', options);
 
@@ -413,6 +228,120 @@ export const healthOptions = (options?: Options<HealthData>) => queryOptions<Hea
     },
     queryKey: healthQueryKey(options)
 });
+
+export const getAllCoursesQueryKey = (options?: Options<GetAllCoursesData>) => createQueryKey('getAllCourses', options);
+
+/**
+ * Get all courses with pagination
+ */
+export const getAllCoursesOptions = (options?: Options<GetAllCoursesData>) => queryOptions<GetAllCoursesResponse, DefaultError, GetAllCoursesResponse, ReturnType<typeof getAllCoursesQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getAllCourses({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getAllCoursesQueryKey(options)
+});
+
+export const getAllCoursesInfiniteQueryKey = (options?: Options<GetAllCoursesData>): QueryKey<Options<GetAllCoursesData>> => createQueryKey('getAllCourses', options, true);
+
+/**
+ * Get all courses with pagination
+ */
+export const getAllCoursesInfiniteOptions = (options?: Options<GetAllCoursesData>) => infiniteQueryOptions<GetAllCoursesResponse, DefaultError, InfiniteData<GetAllCoursesResponse>, QueryKey<Options<GetAllCoursesData>>, number | Pick<QueryKey<Options<GetAllCoursesData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<GetAllCoursesData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await getAllCourses({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getAllCoursesInfiniteQueryKey(options)
+});
+
+/**
+ * Create a new course
+ */
+export const createCourseMutation = (options?: Partial<Options<CreateCourseData>>): UseMutationOptions<CreateCourseResponse, DefaultError, Options<CreateCourseData>> => {
+    const mutationOptions: UseMutationOptions<CreateCourseResponse, DefaultError, Options<CreateCourseData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createCourse({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getCourseBySlugQueryKey = (options: Options<GetCourseBySlugData>) => createQueryKey('getCourseBySlug', options);
+
+/**
+ * Get course by slug
+ */
+export const getCourseBySlugOptions = (options: Options<GetCourseBySlugData>) => queryOptions<GetCourseBySlugResponse, DefaultError, GetCourseBySlugResponse, ReturnType<typeof getCourseBySlugQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getCourseBySlug({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getCourseBySlugQueryKey(options)
+});
+
+/**
+ * Delete a course
+ */
+export const deleteCourseMutation = (options?: Partial<Options<DeleteCourseData>>): UseMutationOptions<DeleteCourseResponse, DefaultError, Options<DeleteCourseData>> => {
+    const mutationOptions: UseMutationOptions<DeleteCourseResponse, DefaultError, Options<DeleteCourseData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteCourse({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update a course
+ */
+export const updateCourseMutation = (options?: Partial<Options<UpdateCourseData>>): UseMutationOptions<UpdateCourseResponse, DefaultError, Options<UpdateCourseData>> => {
+    const mutationOptions: UseMutationOptions<UpdateCourseResponse, DefaultError, Options<UpdateCourseData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateCourse({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 export const getAllMessagesQueryKey = (options?: Options<GetAllMessagesData>) => createQueryKey('getAllMessages', options);
 
@@ -528,6 +457,58 @@ export const updateStatusMutation = (options?: Partial<Options<UpdateStatusData>
     return mutationOptions;
 };
 
+export const getAllCategoriesQueryKey = (options?: Options<GetAllCategoriesData>) => createQueryKey('getAllCategories', options);
+
+/**
+ * Get all categories
+ */
+export const getAllCategoriesOptions = (options?: Options<GetAllCategoriesData>) => queryOptions<GetAllCategoriesResponse, DefaultError, GetAllCategoriesResponse, ReturnType<typeof getAllCategoriesQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getAllCategories({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getAllCategoriesQueryKey(options)
+});
+
+/**
+ * Create a new category
+ */
+export const createCategoryMutation = (options?: Partial<Options<CreateCategoryData>>): UseMutationOptions<CreateCategoryResponse, DefaultError, Options<CreateCategoryData>> => {
+    const mutationOptions: UseMutationOptions<CreateCategoryResponse, DefaultError, Options<CreateCategoryData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createCategory({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Delete a category
+ */
+export const deleteCategoryMutation = (options?: Partial<Options<DeleteCategoryData>>): UseMutationOptions<DeleteCategoryResponse, DefaultError, Options<DeleteCategoryData>> => {
+    const mutationOptions: UseMutationOptions<DeleteCategoryResponse, DefaultError, Options<DeleteCategoryData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteCategory({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
 export const getPublishedBlogsQueryKey = (options?: Options<GetPublishedBlogsData>) => createQueryKey('getPublishedBlogs', options);
 
 /**
@@ -573,6 +554,23 @@ export const getPublishedBlogsInfiniteOptions = (options?: Options<GetPublishedB
     queryKey: getPublishedBlogsInfiniteQueryKey(options)
 });
 
+/**
+ * Create a new blog
+ */
+export const createBlogMutation = (options?: Partial<Options<CreateBlogData>>): UseMutationOptions<CreateBlogResponse, DefaultError, Options<CreateBlogData>> => {
+    const mutationOptions: UseMutationOptions<CreateBlogResponse, DefaultError, Options<CreateBlogData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createBlog({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
 export const getBlogBySlugQueryKey = (options: Options<GetBlogBySlugData>) => createQueryKey('getBlogBySlug', options);
 
 /**
@@ -592,12 +590,12 @@ export const getBlogBySlugOptions = (options: Options<GetBlogBySlugData>) => que
 });
 
 /**
- * Verify email with OTP
+ * Delete a blog
  */
-export const verifyEmailMutation = (options?: Partial<Options<VerifyEmailData>>): UseMutationOptions<VerifyEmailResponse, DefaultError, Options<VerifyEmailData>> => {
-    const mutationOptions: UseMutationOptions<VerifyEmailResponse, DefaultError, Options<VerifyEmailData>> = {
+export const deleteBlogMutation = (options?: Partial<Options<DeleteBlogData>>): UseMutationOptions<DeleteBlogResponse, DefaultError, Options<DeleteBlogData>> => {
+    const mutationOptions: UseMutationOptions<DeleteBlogResponse, DefaultError, Options<DeleteBlogData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await verifyEmail({
+            const { data } = await deleteBlog({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -609,12 +607,12 @@ export const verifyEmailMutation = (options?: Partial<Options<VerifyEmailData>>)
 };
 
 /**
- * Resend verification OTP
+ * Update a blog
  */
-export const resendOtpMutation = (options?: Partial<Options<ResendOtpData>>): UseMutationOptions<ResendOtpResponse, DefaultError, Options<ResendOtpData>> => {
-    const mutationOptions: UseMutationOptions<ResendOtpResponse, DefaultError, Options<ResendOtpData>> = {
+export const updateBlogMutation = (options?: Partial<Options<UpdateBlogData>>): UseMutationOptions<UpdateBlogResponse, DefaultError, Options<UpdateBlogData>> => {
+    const mutationOptions: UseMutationOptions<UpdateBlogResponse, DefaultError, Options<UpdateBlogData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await resendOtp({
+            const { data } = await updateBlog({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -673,74 +671,6 @@ export const refreshTokenMutation = (options?: Partial<Options<RefreshTokenData>
     return mutationOptions;
 };
 
-/**
- * Request forgot password link
- */
-export const forgotPasswordMutation = (options?: Partial<Options<ForgotPasswordData>>): UseMutationOptions<ForgotPasswordResponse, DefaultError, Options<ForgotPasswordData>> => {
-    const mutationOptions: UseMutationOptions<ForgotPasswordResponse, DefaultError, Options<ForgotPasswordData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await forgotPassword({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Reset password with token
- */
-export const resetPasswordMutation = (options?: Partial<Options<ResetPasswordData>>): UseMutationOptions<ResetPasswordResponse, DefaultError, Options<ResetPasswordData>> => {
-    const mutationOptions: UseMutationOptions<ResetPasswordResponse, DefaultError, Options<ResetPasswordData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await resetPassword({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Initiate change password - verifies old password and sends OTP
- */
-export const initiateChangePasswordMutation = (options?: Partial<Options<InitiateChangePasswordData>>): UseMutationOptions<InitiateChangePasswordResponse, DefaultError, Options<InitiateChangePasswordData>> => {
-    const mutationOptions: UseMutationOptions<InitiateChangePasswordResponse, DefaultError, Options<InitiateChangePasswordData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await initiateChangePassword({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Confirm change password with OTP
- */
-export const confirmChangePasswordMutation = (options?: Partial<Options<ConfirmChangePasswordData>>): UseMutationOptions<ConfirmChangePasswordResponse, DefaultError, Options<ConfirmChangePasswordData>> => {
-    const mutationOptions: UseMutationOptions<ConfirmChangePasswordResponse, DefaultError, Options<ConfirmChangePasswordData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await confirmChangePassword({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
 export const getMeQueryKey = (options?: Options<GetMeData>) => createQueryKey('getMe', options);
 
 /**
@@ -757,1164 +687,4 @@ export const getMeOptions = (options?: Options<GetMeData>) => queryOptions<GetMe
         return data;
     },
     queryKey: getMeQueryKey(options)
-});
-
-export const getUserDetailsQueryKey = (options: Options<GetUserDetailsData>) => createQueryKey('getUserDetails', options);
-
-export const getUserDetailsOptions = (options: Options<GetUserDetailsData>) => queryOptions<GetUserDetailsResponse, DefaultError, GetUserDetailsResponse, ReturnType<typeof getUserDetailsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getUserDetails({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getUserDetailsQueryKey(options)
-});
-
-export const getPendingVerificationsQueryKey = (options?: Options<GetPendingVerificationsData>) => createQueryKey('getPendingVerifications', options);
-
-/**
- * Get pending verifications
- */
-export const getPendingVerificationsOptions = (options?: Options<GetPendingVerificationsData>) => queryOptions<GetPendingVerificationsResponse, DefaultError, GetPendingVerificationsResponse, ReturnType<typeof getPendingVerificationsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getPendingVerifications({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getPendingVerificationsQueryKey(options)
-});
-
-export const getPendingVerificationsInfiniteQueryKey = (options?: Options<GetPendingVerificationsData>): QueryKey<Options<GetPendingVerificationsData>> => createQueryKey('getPendingVerifications', options, true);
-
-/**
- * Get pending verifications
- */
-export const getPendingVerificationsInfiniteOptions = (options?: Options<GetPendingVerificationsData>) => infiniteQueryOptions<GetPendingVerificationsResponse, DefaultError, InfiniteData<GetPendingVerificationsResponse>, QueryKey<Options<GetPendingVerificationsData>>, number | Pick<QueryKey<Options<GetPendingVerificationsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetPendingVerificationsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getPendingVerifications({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getPendingVerificationsInfiniteQueryKey(options)
-});
-
-export const getUserVerificationsQueryKey = (options: Options<GetUserVerificationsData>) => createQueryKey('getUserVerifications', options);
-
-/**
- * Get user verification list
- */
-export const getUserVerificationsOptions = (options: Options<GetUserVerificationsData>) => queryOptions<GetUserVerificationsResponse, DefaultError, GetUserVerificationsResponse, ReturnType<typeof getUserVerificationsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getUserVerifications({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getUserVerificationsQueryKey(options)
-});
-
-/**
- * Verify contractor
- */
-export const verifyContractorMutation = (options?: Partial<Options<VerifyContractorData>>): UseMutationOptions<VerifyContractorResponse, DefaultError, Options<VerifyContractorData>> => {
-    const mutationOptions: UseMutationOptions<VerifyContractorResponse, DefaultError, Options<VerifyContractorData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await verifyContractor({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Verify client
- */
-export const verifyClientMutation = (options?: Partial<Options<VerifyClientData>>): UseMutationOptions<unknown, DefaultError, Options<VerifyClientData>> => {
-    const mutationOptions: UseMutationOptions<unknown, DefaultError, Options<VerifyClientData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await verifyClient({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Verify design consultancy
- */
-export const verifyDesignConsultancyMutation = (options?: Partial<Options<VerifyDesignConsultancyData>>): UseMutationOptions<VerifyDesignConsultancyResponse, DefaultError, Options<VerifyDesignConsultancyData>> => {
-    const mutationOptions: UseMutationOptions<VerifyDesignConsultancyResponse, DefaultError, Options<VerifyDesignConsultancyData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await verifyDesignConsultancy({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Submit a review for a completed project.
- * Clients can review the awarded contractor.
- * Contractors can review the client.
- */
-export const submitReviewMutation = (options?: Partial<Options<SubmitReviewData>>): UseMutationOptions<SubmitReviewResponse, DefaultError, Options<SubmitReviewData>> => {
-    const mutationOptions: UseMutationOptions<SubmitReviewResponse, DefaultError, Options<SubmitReviewData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await submitReview({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getUserReviewsQueryKey = (options: Options<GetUserReviewsData>) => createQueryKey('getUserReviews', options);
-
-/**
- * Get all reviews for a specific user.
- */
-export const getUserReviewsOptions = (options: Options<GetUserReviewsData>) => queryOptions<GetUserReviewsResponse, DefaultError, GetUserReviewsResponse, ReturnType<typeof getUserReviewsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getUserReviews({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getUserReviewsQueryKey(options)
-});
-
-export const getProjectsQueryKey = (options?: Options<GetProjectsData>) => createQueryKey('getProjects', options);
-
-export const getProjectsOptions = (options?: Options<GetProjectsData>) => queryOptions<GetProjectsResponse, DefaultError, GetProjectsResponse, ReturnType<typeof getProjectsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getProjects({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProjectsQueryKey(options)
-});
-
-export const getProjectsInfiniteQueryKey = (options?: Options<GetProjectsData>): QueryKey<Options<GetProjectsData>> => createQueryKey('getProjects', options, true);
-
-export const getProjectsInfiniteOptions = (options?: Options<GetProjectsData>) => infiniteQueryOptions<GetProjectsResponse, DefaultError, InfiniteData<GetProjectsResponse>, QueryKey<Options<GetProjectsData>>, number | Pick<QueryKey<Options<GetProjectsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetProjectsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getProjects({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProjectsInfiniteQueryKey(options)
-});
-
-export const createProjectMutation = (options?: Partial<Options<CreateProjectData>>): UseMutationOptions<CreateProjectResponse, DefaultError, Options<CreateProjectData>> => {
-    const mutationOptions: UseMutationOptions<CreateProjectResponse, DefaultError, Options<CreateProjectData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await createProject({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getMyProjectsQueryKey = (options?: Options<GetMyProjectsData>) => createQueryKey('getMyProjects', options);
-
-export const getMyProjectsOptions = (options?: Options<GetMyProjectsData>) => queryOptions<GetMyProjectsResponse, DefaultError, GetMyProjectsResponse, ReturnType<typeof getMyProjectsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getMyProjects({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getMyProjectsQueryKey(options)
-});
-
-export const deleteProjectMutation = (options?: Partial<Options<DeleteProjectData>>): UseMutationOptions<DeleteProjectResponse, DefaultError, Options<DeleteProjectData>> => {
-    const mutationOptions: UseMutationOptions<DeleteProjectResponse, DefaultError, Options<DeleteProjectData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteProject({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getProjectDetailsQueryKey = (options: Options<GetProjectDetailsData>) => createQueryKey('getProjectDetails', options);
-
-export const getProjectDetailsOptions = (options: Options<GetProjectDetailsData>) => queryOptions<GetProjectDetailsResponse, DefaultError, GetProjectDetailsResponse, ReturnType<typeof getProjectDetailsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getProjectDetails({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProjectDetailsQueryKey(options)
-});
-
-export const updateProjectMutation = (options?: Partial<Options<UpdateProjectData>>): UseMutationOptions<UpdateProjectResponse, DefaultError, Options<UpdateProjectData>> => {
-    const mutationOptions: UseMutationOptions<UpdateProjectResponse, DefaultError, Options<UpdateProjectData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updateProject({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getProjectBySlugQueryKey = (options: Options<GetProjectBySlugData>) => createQueryKey('getProjectBySlug', options);
-
-export const getProjectBySlugOptions = (options: Options<GetProjectBySlugData>) => queryOptions<GetProjectBySlugResponse, DefaultError, GetProjectBySlugResponse, ReturnType<typeof getProjectBySlugQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getProjectBySlug({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProjectBySlugQueryKey(options)
-});
-
-export const updateProjectByAdminMutation = (options?: Partial<Options<UpdateProjectByAdminData>>): UseMutationOptions<UpdateProjectByAdminResponse, DefaultError, Options<UpdateProjectByAdminData>> => {
-    const mutationOptions: UseMutationOptions<UpdateProjectByAdminResponse, DefaultError, Options<UpdateProjectByAdminData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updateProjectByAdmin({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const cancelProjectMutation = (options?: Partial<Options<CancelProjectData>>): UseMutationOptions<CancelProjectResponse, DefaultError, Options<CancelProjectData>> => {
-    const mutationOptions: UseMutationOptions<CancelProjectResponse, DefaultError, Options<CancelProjectData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await cancelProject({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getProjectBidsQueryKey = (options: Options<GetProjectBidsData>) => createQueryKey('getProjectBids', options);
-
-export const getProjectBidsOptions = (options: Options<GetProjectBidsData>) => queryOptions<GetProjectBidsResponse, DefaultError, GetProjectBidsResponse, ReturnType<typeof getProjectBidsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getProjectBids({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProjectBidsQueryKey(options)
-});
-
-export const getProjectBidsInfiniteQueryKey = (options: Options<GetProjectBidsData>): QueryKey<Options<GetProjectBidsData>> => createQueryKey('getProjectBids', options, true);
-
-export const getProjectBidsInfiniteOptions = (options: Options<GetProjectBidsData>) => infiniteQueryOptions<GetProjectBidsResponse, DefaultError, InfiniteData<GetProjectBidsResponse>, QueryKey<Options<GetProjectBidsData>>, number | Pick<QueryKey<Options<GetProjectBidsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetProjectBidsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getProjectBids({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProjectBidsInfiniteQueryKey(options)
-});
-
-export const submitBidMutation = (options?: Partial<Options<SubmitBidData>>): UseMutationOptions<SubmitBidResponse, DefaultError, Options<SubmitBidData>> => {
-    const mutationOptions: UseMutationOptions<SubmitBidResponse, DefaultError, Options<SubmitBidData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await submitBid({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const selectBidMutation = (options?: Partial<Options<SelectBidData>>): UseMutationOptions<SelectBidResponse, DefaultError, Options<SelectBidData>> => {
-    const mutationOptions: UseMutationOptions<SelectBidResponse, DefaultError, Options<SelectBidData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await selectBid({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getParticipationReportQueryKey = (options: Options<GetParticipationReportData>) => createQueryKey('getParticipationReport', options);
-
-export const getParticipationReportOptions = (options: Options<GetParticipationReportData>) => queryOptions<GetParticipationReportResponse, DefaultError, GetParticipationReportResponse, ReturnType<typeof getParticipationReportQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getParticipationReport({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getParticipationReportQueryKey(options)
-});
-
-export const markAsCompletedMutation = (options?: Partial<Options<MarkAsCompletedData>>): UseMutationOptions<MarkAsCompletedResponse, DefaultError, Options<MarkAsCompletedData>> => {
-    const mutationOptions: UseMutationOptions<MarkAsCompletedResponse, DefaultError, Options<MarkAsCompletedData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await markAsCompleted({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const confirmCompletionMutation = (options?: Partial<Options<ConfirmCompletionData>>): UseMutationOptions<ConfirmCompletionResponse, DefaultError, Options<ConfirmCompletionData>> => {
-    const mutationOptions: UseMutationOptions<ConfirmCompletionResponse, DefaultError, Options<ConfirmCompletionData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await confirmCompletion({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const signupMutation = (options?: Partial<Options<SignupData>>): UseMutationOptions<SignupResponse, DefaultError, Options<SignupData>> => {
-    const mutationOptions: UseMutationOptions<SignupResponse, DefaultError, Options<SignupData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await signup({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getProfileQueryKey = (options: Options<GetProfileData>) => createQueryKey('getProfile', options);
-
-export const getProfileOptions = (options: Options<GetProfileData>) => queryOptions<GetProfileResponse, DefaultError, GetProfileResponse, ReturnType<typeof getProfileQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getProfile({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProfileQueryKey(options)
-});
-
-export const updateProfileMutation = (options?: Partial<Options<UpdateProfileData>>): UseMutationOptions<UpdateProfileResponse, DefaultError, Options<UpdateProfileData>> => {
-    const mutationOptions: UseMutationOptions<UpdateProfileResponse, DefaultError, Options<UpdateProfileData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updateProfile({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getDashboardStatsQueryKey = (options?: Options<GetDashboardStatsData>) => createQueryKey('getDashboardStats', options);
-
-/**
- * Dashboard
- */
-export const getDashboardStatsOptions = (options?: Options<GetDashboardStatsData>) => queryOptions<GetDashboardStatsResponse, DefaultError, GetDashboardStatsResponse, ReturnType<typeof getDashboardStatsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getDashboardStats({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getDashboardStatsQueryKey(options)
-});
-
-export const getPortfolioProjectsQueryKey = (options?: Options<GetPortfolioProjectsData>) => createQueryKey('getPortfolioProjects', options);
-
-export const getPortfolioProjectsOptions = (options?: Options<GetPortfolioProjectsData>) => queryOptions<GetPortfolioProjectsResponse, DefaultError, GetPortfolioProjectsResponse, ReturnType<typeof getPortfolioProjectsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getPortfolioProjects({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getPortfolioProjectsQueryKey(options)
-});
-
-export const addPortfolioProjectMutation = (options?: Partial<Options<AddPortfolioProjectData>>): UseMutationOptions<AddPortfolioProjectResponse, DefaultError, Options<AddPortfolioProjectData>> => {
-    const mutationOptions: UseMutationOptions<AddPortfolioProjectResponse, DefaultError, Options<AddPortfolioProjectData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await addPortfolioProject({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const deletePortfolioProjectMutation = (options?: Partial<Options<DeletePortfolioProjectData>>): UseMutationOptions<DeletePortfolioProjectResponse, DefaultError, Options<DeletePortfolioProjectData>> => {
-    const mutationOptions: UseMutationOptions<DeletePortfolioProjectResponse, DefaultError, Options<DeletePortfolioProjectData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deletePortfolioProject({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const updatePortfolioProjectMutation = (options?: Partial<Options<UpdatePortfolioProjectData>>): UseMutationOptions<UpdatePortfolioProjectResponse, DefaultError, Options<UpdatePortfolioProjectData>> => {
-    const mutationOptions: UseMutationOptions<UpdatePortfolioProjectResponse, DefaultError, Options<UpdatePortfolioProjectData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updatePortfolioProject({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const removePhotoMutation = (options?: Partial<Options<RemovePhotoData>>): UseMutationOptions<RemovePhotoResponse, DefaultError, Options<RemovePhotoData>> => {
-    const mutationOptions: UseMutationOptions<RemovePhotoResponse, DefaultError, Options<RemovePhotoData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await removePhoto({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const signup2Mutation = (options?: Partial<Options<Signup2Data>>): UseMutationOptions<Signup2Response, DefaultError, Options<Signup2Data>> => {
-    const mutationOptions: UseMutationOptions<Signup2Response, DefaultError, Options<Signup2Data>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await signup2({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getProfile2QueryKey = (options: Options<GetProfile2Data>) => createQueryKey('getProfile2', options);
-
-export const getProfile2Options = (options: Options<GetProfile2Data>) => queryOptions<GetProfile2Response, DefaultError, GetProfile2Response, ReturnType<typeof getProfile2QueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getProfile2({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProfile2QueryKey(options)
-});
-
-export const updateProfile2Mutation = (options?: Partial<Options<UpdateProfile2Data>>): UseMutationOptions<UpdateProfile2Response, DefaultError, Options<UpdateProfile2Data>> => {
-    const mutationOptions: UseMutationOptions<UpdateProfile2Response, DefaultError, Options<UpdateProfile2Data>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updateProfile2({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Portfolio Management
- */
-export const addPortfolioProject2Mutation = (options?: Partial<Options<AddPortfolioProject2Data>>): UseMutationOptions<AddPortfolioProject2Response, DefaultError, Options<AddPortfolioProject2Data>> => {
-    const mutationOptions: UseMutationOptions<AddPortfolioProject2Response, DefaultError, Options<AddPortfolioProject2Data>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await addPortfolioProject2({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const deletePortfolioProject2Mutation = (options?: Partial<Options<DeletePortfolioProject2Data>>): UseMutationOptions<DeletePortfolioProject2Response, DefaultError, Options<DeletePortfolioProject2Data>> => {
-    const mutationOptions: UseMutationOptions<DeletePortfolioProject2Response, DefaultError, Options<DeletePortfolioProject2Data>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deletePortfolioProject2({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const updatePortfolioProject2Mutation = (options?: Partial<Options<UpdatePortfolioProject2Data>>): UseMutationOptions<UpdatePortfolioProject2Response, DefaultError, Options<UpdatePortfolioProject2Data>> => {
-    const mutationOptions: UseMutationOptions<UpdatePortfolioProject2Response, DefaultError, Options<UpdatePortfolioProject2Data>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updatePortfolioProject2({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const removePhoto2Mutation = (options?: Partial<Options<RemovePhoto2Data>>): UseMutationOptions<RemovePhoto2Response, DefaultError, Options<RemovePhoto2Data>> => {
-    const mutationOptions: UseMutationOptions<RemovePhoto2Response, DefaultError, Options<RemovePhoto2Data>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await removePhoto2({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Availability Toggle
- */
-export const toggleAvailabilityMutation = (options?: Partial<Options<ToggleAvailabilityData>>): UseMutationOptions<ToggleAvailabilityResponse, DefaultError, Options<ToggleAvailabilityData>> => {
-    const mutationOptions: UseMutationOptions<ToggleAvailabilityResponse, DefaultError, Options<ToggleAvailabilityData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await toggleAvailability({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getContractorDashboardStatsQueryKey = (options?: Options<GetContractorDashboardStatsData>) => createQueryKey('getContractorDashboardStats', options);
-
-/**
- * Dashboard
- */
-export const getContractorDashboardStatsOptions = (options?: Options<GetContractorDashboardStatsData>) => queryOptions<GetContractorDashboardStatsResponse, DefaultError, GetContractorDashboardStatsResponse, ReturnType<typeof getContractorDashboardStatsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getContractorDashboardStats({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getContractorDashboardStatsQueryKey(options)
-});
-
-export const signup3Mutation = (options?: Partial<Options<Signup3Data>>): UseMutationOptions<Signup3Response, DefaultError, Options<Signup3Data>> => {
-    const mutationOptions: UseMutationOptions<Signup3Response, DefaultError, Options<Signup3Data>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await signup3({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getProfile3QueryKey = (options: Options<GetProfile3Data>) => createQueryKey('getProfile3', options);
-
-export const getProfile3Options = (options: Options<GetProfile3Data>) => queryOptions<GetProfile3Response, DefaultError, GetProfile3Response, ReturnType<typeof getProfile3QueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getProfile3({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProfile3QueryKey(options)
-});
-
-export const updateProfile3Mutation = (options?: Partial<Options<UpdateProfile3Data>>): UseMutationOptions<UpdateProfile3Response, DefaultError, Options<UpdateProfile3Data>> => {
-    const mutationOptions: UseMutationOptions<UpdateProfile3Response, DefaultError, Options<UpdateProfile3Data>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updateProfile3({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getDashboardStats2QueryKey = (options?: Options<GetDashboardStats2Data>) => createQueryKey('getDashboardStats2', options);
-
-/**
- * Dashboard Analytics
- */
-export const getDashboardStats2Options = (options?: Options<GetDashboardStats2Data>) => queryOptions<GetDashboardStats2Response, DefaultError, GetDashboardStats2Response, ReturnType<typeof getDashboardStats2QueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getDashboardStats2({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getDashboardStats2QueryKey(options)
-});
-
-/**
- * Reviews
- */
-export const addReviewMutation = (options?: Partial<Options<AddReviewData>>): UseMutationOptions<AddReviewResponse, DefaultError, Options<AddReviewData>> => {
-    const mutationOptions: UseMutationOptions<AddReviewResponse, DefaultError, Options<AddReviewData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await addReview({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getMyBidsQueryKey = (options?: Options<GetMyBidsData>) => createQueryKey('getMyBids', options);
-
-/**
- * Get bids for the logged-in user
- *
- * Access:
- * - Contractor
- * - Design Consultancy
- */
-export const getMyBidsOptions = (options?: Options<GetMyBidsData>) => queryOptions<GetMyBidsResponse, DefaultError, GetMyBidsResponse, ReturnType<typeof getMyBidsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getMyBids({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getMyBidsQueryKey(options)
-});
-
-export const getMyBidsInfiniteQueryKey = (options?: Options<GetMyBidsData>): QueryKey<Options<GetMyBidsData>> => createQueryKey('getMyBids', options, true);
-
-/**
- * Get bids for the logged-in user
- *
- * Access:
- * - Contractor
- * - Design Consultancy
- */
-export const getMyBidsInfiniteOptions = (options?: Options<GetMyBidsData>) => infiniteQueryOptions<GetMyBidsResponse, DefaultError, InfiniteData<GetMyBidsResponse>, QueryKey<Options<GetMyBidsData>>, number | Pick<QueryKey<Options<GetMyBidsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetMyBidsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getMyBids({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getMyBidsInfiniteQueryKey(options)
-});
-
-export const getBidsByContractorQueryKey = (options: Options<GetBidsByContractorData>) => createQueryKey('getBidsByContractor', options);
-
-/**
- * Get bids by contractorId
- *
- * Access:
- * - Contractor
- * - Agent
- * - Admin
- */
-export const getBidsByContractorOptions = (options: Options<GetBidsByContractorData>) => queryOptions<GetBidsByContractorResponse, DefaultError, GetBidsByContractorResponse, ReturnType<typeof getBidsByContractorQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getBidsByContractor({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getBidsByContractorQueryKey(options)
-});
-
-export const getBidsByContractorInfiniteQueryKey = (options: Options<GetBidsByContractorData>): QueryKey<Options<GetBidsByContractorData>> => createQueryKey('getBidsByContractor', options, true);
-
-/**
- * Get bids by contractorId
- *
- * Access:
- * - Contractor
- * - Agent
- * - Admin
- */
-export const getBidsByContractorInfiniteOptions = (options: Options<GetBidsByContractorData>) => infiniteQueryOptions<GetBidsByContractorResponse, DefaultError, InfiniteData<GetBidsByContractorResponse>, QueryKey<Options<GetBidsByContractorData>>, number | Pick<QueryKey<Options<GetBidsByContractorData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetBidsByContractorData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getBidsByContractor({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getBidsByContractorInfiniteQueryKey(options)
-});
-
-export const rejectBidMutation = (options?: Partial<Options<RejectBidData>>): UseMutationOptions<RejectBidResponse, DefaultError, Options<RejectBidData>> => {
-    const mutationOptions: UseMutationOptions<RejectBidResponse, DefaultError, Options<RejectBidData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await rejectBid({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Create agent (ADMIN only)
- */
-export const createAgentMutation = (options?: Partial<Options<CreateAgentData>>): UseMutationOptions<CreateAgentResponse, DefaultError, Options<CreateAgentData>> => {
-    const mutationOptions: UseMutationOptions<CreateAgentResponse, DefaultError, Options<CreateAgentData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await createAgent({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getAgentsQueryKey = (options?: Options<GetAgentsData>) => createQueryKey('getAgents', options);
-
-/**
- * Get all agents (ADMIN only)
- */
-export const getAgentsOptions = (options?: Options<GetAgentsData>) => queryOptions<GetAgentsResponse, DefaultError, GetAgentsResponse, ReturnType<typeof getAgentsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getAgents({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getAgentsQueryKey(options)
-});
-
-/**
- * Delete agent by ID (ADMIN only)
- */
-export const deleteAgentMutation = (options?: Partial<Options<DeleteAgentData>>): UseMutationOptions<DeleteAgentResponse, DefaultError, Options<DeleteAgentData>> => {
-    const mutationOptions: UseMutationOptions<DeleteAgentResponse, DefaultError, Options<DeleteAgentData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteAgent({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getAgentQueryKey = (options: Options<GetAgentData>) => createQueryKey('getAgent', options);
-
-/**
- * Get agent by ID (ADMIN only)
- */
-export const getAgentOptions = (options: Options<GetAgentData>) => queryOptions<GetAgentResponse, DefaultError, GetAgentResponse, ReturnType<typeof getAgentQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getAgent({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getAgentQueryKey(options)
-});
-
-/**
- * Update agent by ID (ADMIN only)
- */
-export const updateAgentMutation = (options?: Partial<Options<UpdateAgentData>>): UseMutationOptions<UpdateAgentResponse, DefaultError, Options<UpdateAgentData>> => {
-    const mutationOptions: UseMutationOptions<UpdateAgentResponse, DefaultError, Options<UpdateAgentData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updateAgent({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getProfile4QueryKey = (options: Options<GetProfile4Data>) => createQueryKey('getProfile4', options);
-
-/**
- * Get agent profile
- *
- * - Agent → can access only own profile
- * - Admin → can access any agent profile
- */
-export const getProfile4Options = (options: Options<GetProfile4Data>) => queryOptions<GetProfile4Response, DefaultError, GetProfile4Response, ReturnType<typeof getProfile4QueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getProfile4({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getProfile4QueryKey(options)
-});
-
-export const getDashboardStats3QueryKey = (options?: Options<GetDashboardStats3Data>) => createQueryKey('getDashboardStats3', options);
-
-/**
- * Get dashboard stats (AGENT only)
- */
-export const getDashboardStats3Options = (options?: Options<GetDashboardStats3Data>) => queryOptions<GetDashboardStats3Response, DefaultError, GetDashboardStats3Response, ReturnType<typeof getDashboardStats3QueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getDashboardStats3({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getDashboardStats3QueryKey(options)
-});
-
-export const getBlogsQueryKey = (options?: Options<GetBlogsData>) => createQueryKey('getBlogs', options);
-
-export const getBlogsOptions = (options?: Options<GetBlogsData>) => queryOptions<GetBlogsResponse, DefaultError, GetBlogsResponse, ReturnType<typeof getBlogsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getBlogs({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getBlogsQueryKey(options)
-});
-
-export const getBlogsInfiniteQueryKey = (options?: Options<GetBlogsData>): QueryKey<Options<GetBlogsData>> => createQueryKey('getBlogs', options, true);
-
-export const getBlogsInfiniteOptions = (options?: Options<GetBlogsData>) => infiniteQueryOptions<GetBlogsResponse, DefaultError, InfiniteData<GetBlogsResponse>, QueryKey<Options<GetBlogsData>>, number | Pick<QueryKey<Options<GetBlogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<GetBlogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await getBlogs({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getBlogsInfiniteQueryKey(options)
-});
-
-export const createBlogMutation = (options?: Partial<Options<CreateBlogData>>): UseMutationOptions<CreateBlogResponse, DefaultError, Options<CreateBlogData>> => {
-    const mutationOptions: UseMutationOptions<CreateBlogResponse, DefaultError, Options<CreateBlogData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await createBlog({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const deleteBlogMutation = (options?: Partial<Options<DeleteBlogData>>): UseMutationOptions<DeleteBlogResponse, DefaultError, Options<DeleteBlogData>> => {
-    const mutationOptions: UseMutationOptions<DeleteBlogResponse, DefaultError, Options<DeleteBlogData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteBlog({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const updateBlogMutation = (options?: Partial<Options<UpdateBlogData>>): UseMutationOptions<UpdateBlogResponse, DefaultError, Options<UpdateBlogData>> => {
-    const mutationOptions: UseMutationOptions<UpdateBlogResponse, DefaultError, Options<UpdateBlogData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await updateBlog({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getDashboardQueryKey = (options?: Options<GetDashboardData>) => createQueryKey('getDashboard', options);
-
-/**
- * Get platform dashboard statistics
- */
-export const getDashboardOptions = (options?: Options<GetDashboardData>) => queryOptions<GetDashboardResponse, DefaultError, GetDashboardResponse, ReturnType<typeof getDashboardQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getDashboard({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getDashboardQueryKey(options)
-});
-
-export const getAnalyticsOverviewQueryKey = (options?: Options<GetAnalyticsOverviewData>) => createQueryKey('getAnalyticsOverview', options);
-
-/**
- * Get platform analytics overview
- */
-export const getAnalyticsOverviewOptions = (options?: Options<GetAnalyticsOverviewData>) => queryOptions<GetAnalyticsOverviewResponse, DefaultError, GetAnalyticsOverviewResponse, ReturnType<typeof getAnalyticsOverviewQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getAnalyticsOverview({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getAnalyticsOverviewQueryKey(options)
-});
-
-export const getAllUsersQueryKey = (options?: Options<GetAllUsersData>) => createQueryKey('getAllUsers', options);
-
-/**
- * Get all users
- */
-export const getAllUsersOptions = (options?: Options<GetAllUsersData>) => queryOptions<GetAllUsersResponse, DefaultError, GetAllUsersResponse, ReturnType<typeof getAllUsersQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getAllUsers({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getAllUsersQueryKey(options)
 });

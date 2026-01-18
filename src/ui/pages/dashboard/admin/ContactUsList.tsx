@@ -7,12 +7,13 @@ import { Input } from "@/ui/atoms/input";
 import { Button } from "@/ui/atoms/button";
 import { Badge } from "@/ui/atoms/badge";
 import { useDashboard } from "@/hooks/useContext";
-import { Loader } from "@/ui/atoms/loader";
+// import { Loader } from "@/ui/atoms/loader";
 import { formatDate } from "@/ui/lib/date";
 import { ViewContactUsDialog } from "@/ui/organisms/dashboard/admin/contact-us/ViewContactUsDialog";
 import toast from "react-hot-toast";
 import type { ContactUs, ContactUsStatus } from "@/api";
 
+import { Skeleton } from "@/ui/atoms/skeleton";
 import { DeleteConfirmationDialog } from "@/ui/molecules/dashboard/DeleteConfirmationDialog";
 
 const ContactUsList = () => {
@@ -24,6 +25,11 @@ const ContactUsList = () => {
     const [isDetailsOpen, setIsDetailsOpen] = useState(false);
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const [contactToDelete, setContactToDelete] = useState<string | null>(null);
+
+    // Pagination state
+    const [page, setPage] = useState(1);
+    const [limit] = useState(10);
+
     const queryClient = useQueryClient();
 
     useEffect(() => {
@@ -34,9 +40,15 @@ const ContactUsList = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setDebouncedSearch(searchTerm);
+            setPage(1); // Reset to first page on search
         }, 500);
         return () => clearTimeout(timer);
     }, [searchTerm]);
+
+    // Reset page when status filter changes
+    useEffect(() => {
+        setPage(1);
+    }, [statusFilter]);
 
     const {
         data: messagesResponse,
@@ -45,12 +57,19 @@ const ContactUsList = () => {
     } = useQuery({
         ...getAllMessagesOptions({
             query: {
+                // @ts-ignore - search is supported by backend but missing in generated types
                 search: debouncedSearch || undefined,
                 status: statusFilter || undefined,
-            } as any,
+                page,
+                limit,
+            },
         }),
+        placeholderData: (previousData) => previousData, // Keep showing previous data while fetching new page
         staleTime: 30000, // Keep data fresh for 30 seconds to reduce API calls
     });
+
+    const messages = (messagesResponse?.data as ContactUs[]) || [];
+    const pagination = messagesResponse?.pagination;
 
     const deleteMessage = useMutation({
         ...deleteMessageMutation(),
@@ -146,85 +165,164 @@ const ContactUsList = () => {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    {isLoading ? (
-                        <Loader />
-                    ) : (
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse">
-                                <thead>
-                                    <tr className="border-b bg-muted/30">
-                                        <th className="py-4 px-4 font-semibold text-muted-foreground">Sender</th>
-                                        <th className="py-4 px-4 font-semibold text-muted-foreground">Subject</th>
-                                        <th className="py-4 px-4 font-semibold text-muted-foreground">Status</th>
-                                        <th className="py-4 px-4 font-semibold text-muted-foreground">Date</th>
-                                        <th className="py-4 px-4 font-semibold text-muted-foreground text-center">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {filteredMessages.length === 0 ? (
-                                        <tr>
-                                            <td colSpan={5} className="py-12 text-center text-muted-foreground">
-                                                <div className="flex flex-col items-center gap-2">
-                                                    <MessageSquare className="w-8 h-8 opacity-20" />
-                                                    <p>No contact messages found.</p>
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-left border-collapse">
+                            <thead>
+                                <tr className="border-b bg-muted/30">
+                                    <th className="py-4 px-4 font-semibold text-muted-foreground">Sender</th>
+                                    <th className="py-4 px-4 font-semibold text-muted-foreground">Subject</th>
+                                    <th className="py-4 px-4 font-semibold text-muted-foreground">Status</th>
+                                    <th className="py-4 px-4 font-semibold text-muted-foreground">Date</th>
+                                    <th className="py-4 px-4 font-semibold text-muted-foreground text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {isLoading ? (
+                                    // Skeleton Loading State
+                                    Array.from({ length: 5 }).map((_, index) => (
+                                        <tr key={index} className="border-b">
+                                            <td className="py-4 px-4">
+                                                <div className="space-y-2">
+                                                    <Skeleton className="h-4 w-32" />
+                                                    <Skeleton className="h-3 w-40" />
+                                                </div>
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <Skeleton className="h-4 w-48" />
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <Skeleton className="h-6 w-20 rounded-full" />
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <Skeleton className="h-4 w-24" />
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <div className="flex justify-center gap-2">
+                                                    <Skeleton className="h-8 w-8 rounded-md" />
+                                                    <Skeleton className="h-8 w-8 rounded-md" />
                                                 </div>
                                             </td>
                                         </tr>
-                                    ) : (
-                                        filteredMessages.map((contact: ContactUs) => (
-                                            <tr
-                                                key={contact.id}
-                                                className="border-b hover:bg-muted/10 transition-colors"
-                                            >
-                                                <td className="py-4 px-4">
-                                                    <div className="flex flex-col">
-                                                        <span className="font-medium text-foreground">{contact.name}</span>
-                                                        <span className="text-xs text-muted-foreground flex items-center gap-1">
-                                                            <Mail className="w-3 h-3" /> {contact.email}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td className="py-4 px-4">
-                                                    <span className="text-sm font-medium line-clamp-1 truncate max-w-[200px]">
-                                                        {contact.subject}
+                                    ))
+                                ) : messages.length === 0 ? (
+                                    <tr>
+                                        <td colSpan={5} className="py-12 text-center text-muted-foreground">
+                                            <div className="flex flex-col items-center gap-2">
+                                                <MessageSquare className="w-8 h-8 opacity-20" />
+                                                <p>No contact messages found.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ) : (
+                                    messages.map((contact: ContactUs) => (
+                                        <tr
+                                            key={contact.id}
+                                            className="border-b hover:bg-muted/10 transition-colors cursor-pointer"
+                                            onClick={() => handleViewDetails(contact)}
+                                        >
+                                            <td className="py-4 px-4">
+                                                <div className="flex flex-col">
+                                                    <span className="font-medium text-foreground">{contact.name}</span>
+                                                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                                        <Mail className="w-3 h-3" /> {contact.email}
                                                     </span>
-                                                </td>
-                                                <td className="py-4 px-4">
-                                                    {getStatusBadge(contact.status)}
-                                                </td>
-                                                <td className="py-4 px-4 text-muted-foreground text-sm">
-                                                    {formatDate(contact.createdAt)}
-                                                </td>
-                                                <td className="py-4 px-4">
-                                                    <div className="flex items-center justify-center gap-2">
-                                                        <Button
-                                                            variant="ghost"
-                                                            size="sm"
-                                                            onClick={() => handleViewDetails(contact)}
-                                                            className="h-8 px-2 hover:bg-blue-50 hover:text-blue-600"
-                                                            title="View Details"
-                                                        >
-                                                            <Eye className="w-4 h-4 mr-1" />
+                                                </div>
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <span className="text-sm font-medium line-clamp-1 truncate max-w-[200px]">
+                                                    {contact.subject}
+                                                </span>
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                {getStatusBadge(contact.status)}
+                                            </td>
+                                            <td className="py-4 px-4 text-muted-foreground text-sm">
+                                                {formatDate(contact.createdAt)}
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <div className="flex items-center justify-center gap-2">
+                                                    <Button
+                                                        variant="ghost"
+                                                        size="sm"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleViewDetails(contact);
+                                                        }}
+                                                        className="h-8 px-2 hover:bg-blue-50 hover:text-blue-600"
+                                                        title="View Details"
+                                                    >
+                                                        <Eye className="w-4 h-4 mr-1" />
+                                                    </Button>
+                                                    <Button
+                                                        variant="ghost"
+                                                        size="sm"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleDelete(contact.id);
+                                                        }}
+                                                        className="h-8 px-2 hover:bg-red-50 hover:text-red-600"
+                                                        disabled={deleteMessage.isPending}
+                                                        title="Delete Contact Request"
+                                                    >
+                                                        <Trash2 className="w-4 h-4 mr-1" />
+                                                    </Button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
 
-                                                        </Button>
-                                                        <Button
-                                                            variant="ghost"
-                                                            size="sm"
-                                                            onClick={() => handleDelete(contact.id)}
-                                                            className="h-8 px-2 hover:bg-red-50 hover:text-red-600"
-                                                            disabled={deleteMessage.isPending}
-                                                            title="Delete Contact Request"
-                                                        >
-                                                            <Trash2 className="w-4 h-4 mr-1" />
-
-                                                        </Button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        ))
-                                    )}
-                                </tbody>
-                            </table>
+                    {/* Pagination Controls */}
+                    {pagination && pagination.totalPages > 1 && (
+                        <div className="flex items-center justify-between mt-6">
+                            <div className="text-sm text-muted-foreground">
+                                Showing <span className="font-medium">{(page - 1) * limit + 1}</span> to{" "}
+                                <span className="font-medium">
+                                    {Math.min(page * limit, pagination.total)}
+                                </span>{" "}
+                                of <span className="font-medium">{pagination.total}</span> entries
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                                    disabled={page === 1 || isLoading}
+                                >
+                                    Previous
+                                </Button>
+                                {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
+                                    // Logic to show pages around current page
+                                    let p = i + 1;
+                                    if (pagination.totalPages > 5 && page > 3) {
+                                        p = page - 2 + i;
+                                        if (p > pagination.totalPages) p = pagination.totalPages - (4 - i);
+                                    }
+                                    return (
+                                        <Button
+                                            key={i}
+                                            variant={p === page ? "default" : "outline"}
+                                            size="sm"
+                                            className="w-8 h-8 p-0"
+                                            onClick={() => setPage(p)}
+                                            disabled={isLoading}
+                                        >
+                                            {p}
+                                        </Button>
+                                    );
+                                })}
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => setPage((p) => Math.min(pagination.totalPages, p + 1))}
+                                    disabled={page === pagination.totalPages || isLoading}
+                                >
+                                    Next
+                                </Button>
+                            </div>
                         </div>
                     )}
                 </CardContent>

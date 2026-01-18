@@ -1,18 +1,16 @@
-import { useEffect } from "react";
+import { useDashboard } from "@/hooks/useContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/atoms/card";
-import { useQuery } from "@tanstack/react-query";
-import { getAnalyticsOverviewOptions } from "@/api/@tanstack/react-query.gen";
+import { Skeleton } from "@/ui/atoms/skeleton";
 import {
-  Users,
+  Activity,
   BookText,
-  FileText,
-  Eye,
   CheckCircle,
   Clock,
-  Activity,
+  Eye,
+  FileText,
+  Users,
 } from "lucide-react";
-import { Skeleton } from "@/ui/atoms/skeleton";
-import { useDashboard } from "@/hooks/useContext";
+import { useEffect } from "react";
 
 const AdminHomepage = () => {
   const { setTitle } = useDashboard();
@@ -21,11 +19,11 @@ const AdminHomepage = () => {
     setTitle("Admin Dashboard");
   }, []);
 
-  const { data: analyticsResponse, isLoading } = useQuery({
-    ...getAnalyticsOverviewOptions(),
-  });
 
-  const analytics = (analyticsResponse?.data as any) || {};
+  const isLoading = false
+
+  // @ts-ignore
+  const analytics = ({} as any) || {};
 
   const stats = [
     {

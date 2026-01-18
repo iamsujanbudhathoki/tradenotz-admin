@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import "./index.css";
 
 import { APIConfig } from "./config/api.config";
+import { AuthProvider } from "./context/AuthProvider";
 import { RouterWithAuth } from "./HOC/RouterWithAuth";
 
 const queryClient = new QueryClient();
@@ -26,10 +27,10 @@ APIConfig();
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      {/* <AuthProvider> */}
+      <AuthProvider>
         <RouterWithAuth />
         <Toaster position="top-right" />
-      {/* </AuthProvider> */}
+      </AuthProvider>
     </QueryClientProvider>
   </StrictMode>
 );

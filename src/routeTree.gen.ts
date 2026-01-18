@@ -16,6 +16,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as DashboardCoursesRouteImport } from './routes/dashboard/courses'
+import { Route as DashboardContactUsRouteImport } from './routes/dashboard/contact-us'
 import { Route as DashboardBlogsRouteImport } from './routes/dashboard/blogs'
 import { Route as DashboardCoursesIndexRouteImport } from './routes/dashboard/courses/index'
 import { Route as DashboardBlogsIndexRouteImport } from './routes/dashboard/blogs/index'
@@ -57,6 +58,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 const DashboardCoursesRoute = DashboardCoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardContactUsRoute = DashboardContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardBlogsRoute = DashboardBlogsRouteImport.update({
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
   '/dashboard/blogs': typeof DashboardBlogsRouteWithChildren
+  '/dashboard/contact-us': typeof DashboardContactUsRoute
   '/dashboard/courses': typeof DashboardCoursesRouteWithChildren
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/dashboard/contact-us': typeof DashboardContactUsRoute
   '/admin': typeof AdminIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/blogs/new': typeof DashboardBlogsNewRoute
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
   '/dashboard/blogs': typeof DashboardBlogsRouteWithChildren
+  '/dashboard/contact-us': typeof DashboardContactUsRoute
   '/dashboard/courses': typeof DashboardCoursesRouteWithChildren
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/dashboard/blogs'
+    | '/dashboard/contact-us'
     | '/dashboard/courses'
     | '/admin/'
     | '/dashboard/'
@@ -163,6 +173,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/login'
+    | '/dashboard/contact-us'
     | '/admin'
     | '/dashboard'
     | '/dashboard/blogs/new'
@@ -178,6 +189,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/dashboard/blogs'
+    | '/dashboard/contact-us'
     | '/dashboard/courses'
     | '/admin/'
     | '/dashboard/'
@@ -245,6 +257,13 @@ declare module '@tanstack/react-router' {
       path: '/courses'
       fullPath: '/dashboard/courses'
       preLoaderRoute: typeof DashboardCoursesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/contact-us': {
+      id: '/dashboard/contact-us'
+      path: '/contact-us'
+      fullPath: '/dashboard/contact-us'
+      preLoaderRoute: typeof DashboardContactUsRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/dashboard/blogs': {
@@ -342,12 +361,14 @@ const DashboardCoursesRouteWithChildren =
 
 interface DashboardRouteChildren {
   DashboardBlogsRoute: typeof DashboardBlogsRouteWithChildren
+  DashboardContactUsRoute: typeof DashboardContactUsRoute
   DashboardCoursesRoute: typeof DashboardCoursesRouteWithChildren
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardBlogsRoute: DashboardBlogsRouteWithChildren,
+  DashboardContactUsRoute: DashboardContactUsRoute,
   DashboardCoursesRoute: DashboardCoursesRouteWithChildren,
   DashboardIndexRoute: DashboardIndexRoute,
 }

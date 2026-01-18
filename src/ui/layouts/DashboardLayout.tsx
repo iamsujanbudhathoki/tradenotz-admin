@@ -1,9 +1,9 @@
-import type { User } from "@/api";
 import { menuList } from "@/constants/menuList";
 import { DashboardContext } from "@/context/DashboardContext";
+import { useAuth } from "@/hooks/useContext";
 import type { RouteContextType } from "@/main";
-import { useGetMe, useLogoutMutation } from "@/query/useAuth";
-import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
+import { useLogoutMutation } from "@/query/useAuth";
+import { Avatar } from "@/ui/atoms/avatar";
 import { Button } from "@/ui/atoms/button";
 import {
   Card,
@@ -31,112 +31,32 @@ import {
   useNavigate,
   useRouteContext,
 } from "@tanstack/react-router";
-import { AlertTriangle, ArrowRight, Loader2, X } from "lucide-react";
+import { ArrowRight, Loader2, X } from "lucide-react";
 import * as React from "react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
-  const [title, setTitle] = useState("Dashboard"); // Default title
+  const [title, setTitle] = useState("Dashboard");
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   // @ts-ignore
-  const { user: contextUser } = useRouteContext({
+  const { user: contextUser, } = useRouteContext({
     from: "__root__",
   }) as RouteContextType;
+
+  const {
+    fullUserDetails,
+  } = useAuth();
   // @ts-ignore
-  const { data: userData, error, isLoading: isLoadingUser } = useGetMe();
   const logoutMutation = useLogoutMutation();
 
-  console.log("error", error);
-  const user = useMemo(() => {
-    if (!userData) return null;
 
-    if (
-      userData &&
-      typeof userData === "object" &&
-      "data" in userData &&
-      userData.data
-    ) {
-      const innerData = userData.data as any;
-
-      if (
-        innerData &&
-        typeof innerData === "object" &&
-        "user" in innerData &&
-        innerData.user
-      ) {
-        const userObj = innerData.user as any;
-        // Remove nested profile and media from user object for display
-        return {
-          ...userObj,
-          profile: undefined,
-          media: undefined,
-        } as User;
-      }
-
-      // Check if innerData also has a data property (nested structure for other roles)
-      if (
-        innerData &&
-        typeof innerData === "object" &&
-        "data" in innerData &&
-        innerData.data
-      ) {
-        const profileData = innerData.data as any;
-        // Check if profileData has a user property
-        if (
-          profileData &&
-          typeof profileData === "object" &&
-          "user" in profileData &&
-          profileData.user
-        ) {
-          return profileData.user as User;
-        }
-        // If profileData is directly a user object
-        if (
-          profileData &&
-          typeof profileData === "object" &&
-          "fullName" in profileData
-        ) {
-          return profileData as User;
-        }
-      }
-
-      // Fallback: if innerData is directly the user object (has fullName property)
-      if (
-        innerData &&
-        typeof innerData === "object" &&
-        "fullName" in innerData
-      ) {
-        return innerData as User;
-      }
-    }
-
-    return null;
-  }, [userData]);
-
-  const initials = useMemo(() => {
-    if (!user?.fullName) return "U";
-    const parts = user.fullName.split(" ");
-    const firstName = parts[0] || "";
-    const lastName = parts.slice(1).join(" ") || "";
-    return firstName[0] + (lastName[0] || "").toUpperCase();
-  }, [user]);
-
-  const profileImageUrl = useMemo(() => {
-    if (user?.profileImage?.url) {
-      return user.profileImage.url;
-    }
-    if (user?.avatar) {
-      return user.avatar;
-    }
-    return "";
-  }, [user]);
 
   const handleLogout = () => {
     setShowLogoutDialog(true);
@@ -258,11 +178,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 >
                   <div className="p-[2px] rounded-full gradient-accent">
                     <Avatar className="h-10 w-10 border-2 border-white bg-white">
-                      <AvatarImage
-                        src={profileImageUrl}
-                        alt={user?.fullName || "User"}
-                      />
-                      <AvatarFallback>{initials}</AvatarFallback>
+                      Fall
                     </Avatar>
                   </div>
                 </button>
@@ -287,34 +203,15 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                             <X className="h-5 w-5" />
                           </button>
                           <p className="text-sm text-gray-700 text-center pr-10">
-                            {user?.email}
+                            {fullUserDetails?.email}
                           </p>
                         </CardHeader>
                         <CardContent className="pt-0 pb-6">
                           <div className="flex flex-col items-center space-y-4">
-                            {/* Profile Picture */}
-                            <div className="relative">
-                              <div className="p-[3px] rounded-full gradient-accent">
-                                <Avatar className="h-24 w-24 border-4 border-white bg-white">
-                                  <AvatarImage
-                                    src={profileImageUrl}
-                                    alt={user?.fullName || "User"}
-                                  />
-                                  <AvatarFallback className="text-2xl bg-primary text-white">
-                                    {initials}
-                                  </AvatarFallback>
-                                </Avatar>
-                              </div>
-                              <div className="absolute bottom-0 right-0 bg-white rounded-full p-1.5 shadow-md border-2 border-white">
-                                <div className="w-4 h-4 bg-gray-400 rounded-sm flex items-center justify-center">
-                                  <div className="w-2 h-2 bg-white rounded-sm" />
-                                </div>
-                              </div>
-                            </div>
 
                             {/* Greeting */}
                             <h3 className="text-xl font-semibold text-gray-900">
-                              Hi, {user?.fullName}!
+                              Hi, {fullUserDetails?.fullName}!
                             </h3>
 
                             {/* Manage Account Button */}
@@ -352,21 +249,6 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               </div>
             </header>
             <div className="flex-1 overflow-auto">
-              {user && !(user as any).isAgentVerified && (
-                <div className="bg-amber-50 border-l-4 border-amber-500 p-4 m-4 md:mx-6 mb-0 flex items-start gap-3 shadow-sm rounded-r-md">
-                  <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-amber-800 font-medium">
-                      Profile Verification Pending
-                    </h3>
-                    <p className="text-amber-700 text-sm mt-1">
-                      Your profile has not been verified by an agent yet. Some
-                      platform features may be limited until verification is
-                      complete.
-                    </p>
-                  </div>
-                </div>
-              )}
               <div className="p-4 md:p-6">{children}</div>
             </div>
           </main>

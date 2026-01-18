@@ -1,6 +1,5 @@
 import {
   BookOpen,
-  FileText,
   LayoutDashboard,
   Mail,
   PlaySquare
@@ -24,13 +23,6 @@ export const menuList = [
     icon: <BookOpen />,
     path: "/dashboard/blogs",
   },
-
-  {
-    label: "Reports",
-    icon: <FileText />,
-    path: "/dashboard/reports",
-  },
-
   {
     label: "Contact Us",
     icon: <Mail />,

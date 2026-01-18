@@ -2,7 +2,7 @@
 
 import { type Client, formDataBodySerializer, type Options as Options2, type TDataShape } from './client';
 import { client } from './client.gen';
-import type { AddPortfolioProject2Data, AddPortfolioProject2Responses, AddPortfolioProjectData, AddPortfolioProjectResponses, AddReviewData, AddReviewResponses, CancelProjectData, CancelProjectResponses, ConfirmChangePasswordData, ConfirmChangePasswordResponses, ConfirmCompletionData, ConfirmCompletionResponses, CreateAgentData, CreateAgentResponses, CreateBlogData, CreateBlogResponses, CreateProjectData, CreateProjectResponses, DeleteAgentData, DeleteAgentResponses, DeleteBlogData, DeleteBlogResponses, DeleteMediaData, DeleteMediaResponses, DeleteMessageData, DeleteMessageResponses, DeletePortfolioProject2Data, DeletePortfolioProject2Responses, DeletePortfolioProjectData, DeletePortfolioProjectResponses, DeleteProjectData, DeleteProjectResponses, DownloadMediaData, DownloadMediaResponses, ForgotPasswordData, ForgotPasswordResponses, GetAgentData, GetAgentResponses, GetAgentsData, GetAgentsResponses, GetAllMediaData, GetAllMediaResponses, GetAllMessagesData, GetAllMessagesResponses, GetAllUsersData, GetAllUsersResponses, GetAnalyticsOverviewData, GetAnalyticsOverviewResponses, GetBidsByContractorData, GetBidsByContractorResponses, GetBlogBySlugData, GetBlogBySlugResponses, GetBlogsData, GetBlogsResponses, GetContractorDashboardStatsData, GetContractorDashboardStatsResponses, GetDashboardData, GetDashboardResponses, GetDashboardStats2Data, GetDashboardStats2Responses, GetDashboardStats3Data, GetDashboardStats3Responses, GetDashboardStatsData, GetDashboardStatsResponses, GetLogsByUserIdData, GetLogsByUserIdResponses, GetMeData, GetMediaByIdData, GetMediaByIdResponses, GetMeResponses, GetMessageByIdData, GetMessageByIdResponses, GetMyBidsData, GetMyBidsResponses, GetMyLogsData, GetMyLogsResponses, GetMyProjectsData, GetMyProjectsResponses, GetParticipationReportData, GetParticipationReportResponses, GetPendingVerificationsData, GetPendingVerificationsResponses, GetPortfolioProjectsData, GetPortfolioProjectsResponses, GetProfile2Data, GetProfile2Responses, GetProfile3Data, GetProfile3Responses, GetProfile4Data, GetProfile4Responses, GetProfileData, GetProfileResponses, GetProjectBidsData, GetProjectBidsResponses, GetProjectBySlugData, GetProjectBySlugResponses, GetProjectDetailsData, GetProjectDetailsResponses, GetProjectsData, GetProjectsResponses, GetPublishedBlogsData, GetPublishedBlogsResponses, GetUnreadCountData, GetUnreadCountResponses, GetUserDetailsData, GetUserDetailsResponses, GetUserNotificationsData, GetUserNotificationsResponses, GetUserReviewsData, GetUserReviewsResponses, GetUserVerificationsData, GetUserVerificationsResponses, HealthData, HealthResponses, InitiateChangePasswordData, InitiateChangePasswordResponses, LoginData, LoginResponses, LogoutData, LogoutResponses, MarkAllAsReadData, MarkAllAsReadResponses, MarkAsCompletedData, MarkAsCompletedResponses, MarkAsReadData, MarkAsReadResponses, RefreshTokenData, RefreshTokenResponses, RejectBidData, RejectBidResponses, RemovePhoto2Data, RemovePhoto2Responses, RemovePhotoData, RemovePhotoResponses, ResendOtpData, ResendOtpResponses, ResetPasswordData, ResetPasswordResponses, RootData, RootResponses, SelectBidData, SelectBidResponses, Signup2Data, Signup2Responses, Signup3Data, Signup3Responses, SignupData, SignupResponses, SubmitBidData, SubmitBidResponses, SubmitContactFormData, SubmitContactFormResponses, SubmitReviewData, SubmitReviewResponses, ToggleAvailabilityData, ToggleAvailabilityResponses, UpdateAgentData, UpdateAgentResponses, UpdateBlogData, UpdateBlogResponses, UpdateMediaData, UpdateMediaResponses, UpdatePortfolioProject2Data, UpdatePortfolioProject2Responses, UpdatePortfolioProjectData, UpdatePortfolioProjectResponses, UpdateProfile2Data, UpdateProfile2Responses, UpdateProfile3Data, UpdateProfile3Responses, UpdateProfileData, UpdateProfileResponses, UpdateProjectByAdminData, UpdateProjectByAdminResponses, UpdateProjectData, UpdateProjectResponses, UpdateStatusData, UpdateStatusResponses, UploadMediaData, UploadMediaResponses, VerifyClientData, VerifyClientResponses, VerifyContractorData, VerifyContractorResponses, VerifyDesignConsultancyData, VerifyDesignConsultancyResponses, VerifyEmailData, VerifyEmailResponses } from './types.gen';
+import type { CreateBlogData, CreateBlogResponses, CreateCategoryData, CreateCategoryResponses, CreateCourseData, CreateCourseResponses, CreateTagData, CreateTagResponses, DeleteBlogData, DeleteBlogResponses, DeleteCategoryData, DeleteCategoryResponses, DeleteCourseData, DeleteCourseResponses, DeleteMediaData, DeleteMediaResponses, DeleteMessageData, DeleteMessageResponses, DeleteTagData, DeleteTagResponses, GetAllCategoriesData, GetAllCategoriesResponses, GetAllCoursesData, GetAllCoursesResponses, GetAllMediaData, GetAllMediaResponses, GetAllMessagesData, GetAllMessagesResponses, GetAllTagsData, GetAllTagsResponses, GetBlogBySlugData, GetBlogBySlugResponses, GetCourseBySlugData, GetCourseBySlugResponses, GetMeData, GetMeResponses, GetMessageByIdData, GetMessageByIdResponses, GetPublishedBlogsData, GetPublishedBlogsResponses, HealthData, HealthResponses, LoginData, LoginResponses, LogoutData, LogoutResponses, RefreshTokenData, RefreshTokenResponses, RootData, RootResponses, SubmitContactFormData, SubmitContactFormResponses, UpdateBlogData, UpdateBlogResponses, UpdateCourseData, UpdateCourseResponses, UpdateStatusData, UpdateStatusResponses, UploadMediaData, UploadMediaResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -19,27 +19,29 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 };
 
 /**
- * Get user notifications
+ * Get all tags
  */
-export const getUserNotifications = <ThrowOnError extends boolean = false>(options?: Options<GetUserNotificationsData, ThrowOnError>) => (options?.client ?? client).get<GetUserNotificationsResponses, unknown, ThrowOnError>({ url: '/api/v1/notifications', ...options });
+export const getAllTags = <ThrowOnError extends boolean = false>(options?: Options<GetAllTagsData, ThrowOnError>) => (options?.client ?? client).get<GetAllTagsResponses, unknown, ThrowOnError>({ url: '/api/v1/tags', ...options });
 
 /**
- * Get unread notification count
+ * Create a new tag
  */
-export const getUnreadCount = <ThrowOnError extends boolean = false>(options?: Options<GetUnreadCountData, ThrowOnError>) => (options?.client ?? client).get<GetUnreadCountResponses, unknown, ThrowOnError>({ url: '/api/v1/notifications/unread-count', ...options });
+export const createTag = <ThrowOnError extends boolean = false>(options: Options<CreateTagData, ThrowOnError>) => (options.client ?? client).post<CreateTagResponses, unknown, ThrowOnError>({
+    url: '/api/v1/tags',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
 
 /**
- * Mark notification as read
+ * Delete a tag
  */
-export const markAsRead = <ThrowOnError extends boolean = false>(options: Options<MarkAsReadData, ThrowOnError>) => (options.client ?? client).patch<MarkAsReadResponses, unknown, ThrowOnError>({ url: '/api/v1/notifications/{id}/read', ...options });
+export const deleteTag = <ThrowOnError extends boolean = false>(options: Options<DeleteTagData, ThrowOnError>) => (options.client ?? client).delete<DeleteTagResponses, unknown, ThrowOnError>({ url: '/api/v1/tags/{id}', ...options });
 
 /**
- * Mark all notifications as read
- */
-export const markAllAsRead = <ThrowOnError extends boolean = false>(options?: Options<MarkAllAsReadData, ThrowOnError>) => (options?.client ?? client).patch<MarkAllAsReadResponses, unknown, ThrowOnError>({ url: '/api/v1/notifications/read-all', ...options });
-
-/**
- * Upload a media file
+ * Upload media file
  */
 export const uploadMedia = <ThrowOnError extends boolean = false>(options: Options<UploadMediaData, ThrowOnError>) => (options.client ?? client).post<UploadMediaResponses, unknown, ThrowOnError>({
     ...formDataBodySerializer,
@@ -51,28 +53,30 @@ export const uploadMedia = <ThrowOnError extends boolean = false>(options: Optio
     }
 });
 
-export const downloadMedia = <ThrowOnError extends boolean = false>(options: Options<DownloadMediaData, ThrowOnError>) => (options.client ?? client).get<DownloadMediaResponses, unknown, ThrowOnError>({ url: '/api/v1/media/download/{id}', ...options });
-
 /**
- * Get all media with pagination
+ * Get all media for the current user
  */
 export const getAllMedia = <ThrowOnError extends boolean = false>(options?: Options<GetAllMediaData, ThrowOnError>) => (options?.client ?? client).get<GetAllMediaResponses, unknown, ThrowOnError>({ url: '/api/v1/media', ...options });
 
 /**
- * Delete media
+ * Delete media by ID
  */
 export const deleteMedia = <ThrowOnError extends boolean = false>(options: Options<DeleteMediaData, ThrowOnError>) => (options.client ?? client).delete<DeleteMediaResponses, unknown, ThrowOnError>({ url: '/api/v1/media/{id}', ...options });
 
-/**
- * Get media by ID
- */
-export const getMediaById = <ThrowOnError extends boolean = false>(options: Options<GetMediaByIdData, ThrowOnError>) => (options.client ?? client).get<GetMediaByIdResponses, unknown, ThrowOnError>({ url: '/api/v1/media/{id}', ...options });
+export const root = <ThrowOnError extends boolean = false>(options?: Options<RootData, ThrowOnError>) => (options?.client ?? client).get<RootResponses, unknown, ThrowOnError>({ url: '/', ...options });
+
+export const health = <ThrowOnError extends boolean = false>(options?: Options<HealthData, ThrowOnError>) => (options?.client ?? client).get<HealthResponses, unknown, ThrowOnError>({ url: '/health', ...options });
 
 /**
- * Update media details
+ * Get all courses with pagination
  */
-export const updateMedia = <ThrowOnError extends boolean = false>(options: Options<UpdateMediaData, ThrowOnError>) => (options.client ?? client).put<UpdateMediaResponses, unknown, ThrowOnError>({
-    url: '/api/v1/media/{id}',
+export const getAllCourses = <ThrowOnError extends boolean = false>(options?: Options<GetAllCoursesData, ThrowOnError>) => (options?.client ?? client).get<GetAllCoursesResponses, unknown, ThrowOnError>({ url: '/api/v1/courses', ...options });
+
+/**
+ * Create a new course
+ */
+export const createCourse = <ThrowOnError extends boolean = false>(options: Options<CreateCourseData, ThrowOnError>) => (options.client ?? client).post<CreateCourseResponses, unknown, ThrowOnError>({
+    url: '/api/v1/courses',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -81,18 +85,26 @@ export const updateMedia = <ThrowOnError extends boolean = false>(options: Optio
 });
 
 /**
- * Get logs for the authenticated user
+ * Get course by slug
  */
-export const getMyLogs = <ThrowOnError extends boolean = false>(options?: Options<GetMyLogsData, ThrowOnError>) => (options?.client ?? client).get<GetMyLogsResponses, unknown, ThrowOnError>({ url: '/api/v1/logs/my-logs', ...options });
+export const getCourseBySlug = <ThrowOnError extends boolean = false>(options: Options<GetCourseBySlugData, ThrowOnError>) => (options.client ?? client).get<GetCourseBySlugResponses, unknown, ThrowOnError>({ url: '/api/v1/courses/{slug}', ...options });
 
 /**
- * Get logs by user ID (Admin only)
+ * Delete a course
  */
-export const getLogsByUserId = <ThrowOnError extends boolean = false>(options: Options<GetLogsByUserIdData, ThrowOnError>) => (options.client ?? client).get<GetLogsByUserIdResponses, unknown, ThrowOnError>({ url: '/api/v1/logs/user/{userId}', ...options });
+export const deleteCourse = <ThrowOnError extends boolean = false>(options: Options<DeleteCourseData, ThrowOnError>) => (options.client ?? client).delete<DeleteCourseResponses, unknown, ThrowOnError>({ url: '/api/v1/courses/{id}', ...options });
 
-export const root = <ThrowOnError extends boolean = false>(options?: Options<RootData, ThrowOnError>) => (options?.client ?? client).get<RootResponses, unknown, ThrowOnError>({ url: '/', ...options });
-
-export const health = <ThrowOnError extends boolean = false>(options?: Options<HealthData, ThrowOnError>) => (options?.client ?? client).get<HealthResponses, unknown, ThrowOnError>({ url: '/health', ...options });
+/**
+ * Update a course
+ */
+export const updateCourse = <ThrowOnError extends boolean = false>(options: Options<UpdateCourseData, ThrowOnError>) => (options.client ?? client).put<UpdateCourseResponses, unknown, ThrowOnError>({
+    url: '/api/v1/courses/{id}',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
 
 /**
  * Get all contact messages (Admin only)
@@ -134,20 +146,15 @@ export const updateStatus = <ThrowOnError extends boolean = false>(options: Opti
 });
 
 /**
- * Get all published blogs (public endpoint)
+ * Get all categories
  */
-export const getPublishedBlogs = <ThrowOnError extends boolean = false>(options?: Options<GetPublishedBlogsData, ThrowOnError>) => (options?.client ?? client).get<GetPublishedBlogsResponses, unknown, ThrowOnError>({ url: '/api/v1/blogs', ...options });
+export const getAllCategories = <ThrowOnError extends boolean = false>(options?: Options<GetAllCategoriesData, ThrowOnError>) => (options?.client ?? client).get<GetAllCategoriesResponses, unknown, ThrowOnError>({ url: '/api/v1/categories', ...options });
 
 /**
- * Get blog by slug (public endpoint)
+ * Create a new category
  */
-export const getBlogBySlug = <ThrowOnError extends boolean = false>(options: Options<GetBlogBySlugData, ThrowOnError>) => (options.client ?? client).get<GetBlogBySlugResponses, unknown, ThrowOnError>({ url: '/api/v1/blogs/{slug}', ...options });
-
-/**
- * Verify email with OTP
- */
-export const verifyEmail = <ThrowOnError extends boolean = false>(options: Options<VerifyEmailData, ThrowOnError>) => (options.client ?? client).post<VerifyEmailResponses, unknown, ThrowOnError>({
-    url: '/api/v1/auth/verify-email',
+export const createCategory = <ThrowOnError extends boolean = false>(options: Options<CreateCategoryData, ThrowOnError>) => (options.client ?? client).post<CreateCategoryResponses, unknown, ThrowOnError>({
+    url: '/api/v1/categories',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -156,10 +163,42 @@ export const verifyEmail = <ThrowOnError extends boolean = false>(options: Optio
 });
 
 /**
- * Resend verification OTP
+ * Delete a category
  */
-export const resendOtp = <ThrowOnError extends boolean = false>(options: Options<ResendOtpData, ThrowOnError>) => (options.client ?? client).post<ResendOtpResponses, unknown, ThrowOnError>({
-    url: '/api/v1/auth/resend-otp',
+export const deleteCategory = <ThrowOnError extends boolean = false>(options: Options<DeleteCategoryData, ThrowOnError>) => (options.client ?? client).delete<DeleteCategoryResponses, unknown, ThrowOnError>({ url: '/api/v1/categories/{id}', ...options });
+
+/**
+ * Get all published blogs (public endpoint)
+ */
+export const getPublishedBlogs = <ThrowOnError extends boolean = false>(options?: Options<GetPublishedBlogsData, ThrowOnError>) => (options?.client ?? client).get<GetPublishedBlogsResponses, unknown, ThrowOnError>({ url: '/api/v1/blogs', ...options });
+
+/**
+ * Create a new blog
+ */
+export const createBlog = <ThrowOnError extends boolean = false>(options: Options<CreateBlogData, ThrowOnError>) => (options.client ?? client).post<CreateBlogResponses, unknown, ThrowOnError>({
+    url: '/api/v1/blogs',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Get blog by slug (public endpoint)
+ */
+export const getBlogBySlug = <ThrowOnError extends boolean = false>(options: Options<GetBlogBySlugData, ThrowOnError>) => (options.client ?? client).get<GetBlogBySlugResponses, unknown, ThrowOnError>({ url: '/api/v1/blogs/{slug}', ...options });
+
+/**
+ * Delete a blog
+ */
+export const deleteBlog = <ThrowOnError extends boolean = false>(options: Options<DeleteBlogData, ThrowOnError>) => (options.client ?? client).delete<DeleteBlogResponses, unknown, ThrowOnError>({ url: '/api/v1/blogs/{id}', ...options });
+
+/**
+ * Update a blog
+ */
+export const updateBlog = <ThrowOnError extends boolean = false>(options: Options<UpdateBlogData, ThrowOnError>) => (options.client ?? client).put<UpdateBlogResponses, unknown, ThrowOnError>({
+    url: '/api/v1/blogs/{id}',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -187,451 +226,6 @@ export const logout = <ThrowOnError extends boolean = false>(options?: Options<L
 export const refreshToken = <ThrowOnError extends boolean = false>(options?: Options<RefreshTokenData, ThrowOnError>) => (options?.client ?? client).post<RefreshTokenResponses, unknown, ThrowOnError>({ url: '/api/v1/auth/refresh-token', ...options });
 
 /**
- * Request forgot password link
- */
-export const forgotPassword = <ThrowOnError extends boolean = false>(options: Options<ForgotPasswordData, ThrowOnError>) => (options.client ?? client).post<ForgotPasswordResponses, unknown, ThrowOnError>({
-    url: '/api/v1/auth/forgot-password',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Reset password with token
- */
-export const resetPassword = <ThrowOnError extends boolean = false>(options: Options<ResetPasswordData, ThrowOnError>) => (options.client ?? client).post<ResetPasswordResponses, unknown, ThrowOnError>({
-    url: '/api/v1/auth/reset-password',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Initiate change password - verifies old password and sends OTP
- */
-export const initiateChangePassword = <ThrowOnError extends boolean = false>(options: Options<InitiateChangePasswordData, ThrowOnError>) => (options.client ?? client).post<InitiateChangePasswordResponses, unknown, ThrowOnError>({
-    url: '/api/v1/auth/change-password/initiate',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Confirm change password with OTP
- */
-export const confirmChangePassword = <ThrowOnError extends boolean = false>(options: Options<ConfirmChangePasswordData, ThrowOnError>) => (options.client ?? client).post<ConfirmChangePasswordResponses, unknown, ThrowOnError>({
-    url: '/api/v1/auth/change-password/confirm',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
  * Get current user profile
  */
 export const getMe = <ThrowOnError extends boolean = false>(options?: Options<GetMeData, ThrowOnError>) => (options?.client ?? client).get<GetMeResponses, unknown, ThrowOnError>({ url: '/api/v1/auth/me', ...options });
-
-export const getUserDetails = <ThrowOnError extends boolean = false>(options: Options<GetUserDetailsData, ThrowOnError>) => (options.client ?? client).get<GetUserDetailsResponses, unknown, ThrowOnError>({ url: '/api/v1/users/{id}', ...options });
-
-/**
- * Get pending verifications
- */
-export const getPendingVerifications = <ThrowOnError extends boolean = false>(options?: Options<GetPendingVerificationsData, ThrowOnError>) => (options?.client ?? client).get<GetPendingVerificationsResponses, unknown, ThrowOnError>({ url: '/api/v1/users/verifications/pending', ...options });
-
-/**
- * Get user verification list
- */
-export const getUserVerifications = <ThrowOnError extends boolean = false>(options: Options<GetUserVerificationsData, ThrowOnError>) => (options.client ?? client).get<GetUserVerificationsResponses, unknown, ThrowOnError>({ url: '/api/v1/users/{id}/verifications', ...options });
-
-/**
- * Verify contractor
- */
-export const verifyContractor = <ThrowOnError extends boolean = false>(options: Options<VerifyContractorData, ThrowOnError>) => (options.client ?? client).post<VerifyContractorResponses, unknown, ThrowOnError>({
-    url: '/api/v1/users/contractors/{id}/verify',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Verify client
- */
-export const verifyClient = <ThrowOnError extends boolean = false>(options: Options<VerifyClientData, ThrowOnError>) => (options.client ?? client).post<VerifyClientResponses, unknown, ThrowOnError>({
-    url: '/api/v1/users/clients/{id}/verify',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Verify design consultancy
- */
-export const verifyDesignConsultancy = <ThrowOnError extends boolean = false>(options: Options<VerifyDesignConsultancyData, ThrowOnError>) => (options.client ?? client).post<VerifyDesignConsultancyResponses, unknown, ThrowOnError>({
-    url: '/api/v1/users/consultancy/{id}/verify',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Submit a review for a completed project.
- * Clients can review the awarded contractor.
- * Contractors can review the client.
- */
-export const submitReview = <ThrowOnError extends boolean = false>(options: Options<SubmitReviewData, ThrowOnError>) => (options.client ?? client).post<SubmitReviewResponses, unknown, ThrowOnError>({
-    url: '/api/v1/reviews/project/{projectId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Get all reviews for a specific user.
- */
-export const getUserReviews = <ThrowOnError extends boolean = false>(options: Options<GetUserReviewsData, ThrowOnError>) => (options.client ?? client).get<GetUserReviewsResponses, unknown, ThrowOnError>({ url: '/api/v1/reviews/user/{userId}', ...options });
-
-export const getProjects = <ThrowOnError extends boolean = false>(options?: Options<GetProjectsData, ThrowOnError>) => (options?.client ?? client).get<GetProjectsResponses, unknown, ThrowOnError>({ url: '/api/v1/projects', ...options });
-
-export const createProject = <ThrowOnError extends boolean = false>(options: Options<CreateProjectData, ThrowOnError>) => (options.client ?? client).post<CreateProjectResponses, unknown, ThrowOnError>({
-    url: '/api/v1/projects',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const getMyProjects = <ThrowOnError extends boolean = false>(options?: Options<GetMyProjectsData, ThrowOnError>) => (options?.client ?? client).get<GetMyProjectsResponses, unknown, ThrowOnError>({ url: '/api/v1/projects/my-projects', ...options });
-
-export const deleteProject = <ThrowOnError extends boolean = false>(options: Options<DeleteProjectData, ThrowOnError>) => (options.client ?? client).delete<DeleteProjectResponses, unknown, ThrowOnError>({ url: '/api/v1/projects/{projectId}', ...options });
-
-export const getProjectDetails = <ThrowOnError extends boolean = false>(options: Options<GetProjectDetailsData, ThrowOnError>) => (options.client ?? client).get<GetProjectDetailsResponses, unknown, ThrowOnError>({ url: '/api/v1/projects/{projectId}', ...options });
-
-export const updateProject = <ThrowOnError extends boolean = false>(options: Options<UpdateProjectData, ThrowOnError>) => (options.client ?? client).put<UpdateProjectResponses, unknown, ThrowOnError>({
-    url: '/api/v1/projects/{projectId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const getProjectBySlug = <ThrowOnError extends boolean = false>(options: Options<GetProjectBySlugData, ThrowOnError>) => (options.client ?? client).get<GetProjectBySlugResponses, unknown, ThrowOnError>({ url: '/api/v1/projects/slug/{slug}', ...options });
-
-export const updateProjectByAdmin = <ThrowOnError extends boolean = false>(options: Options<UpdateProjectByAdminData, ThrowOnError>) => (options.client ?? client).put<UpdateProjectByAdminResponses, unknown, ThrowOnError>({
-    url: '/api/v1/projects/{projectId}/by-admin',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const cancelProject = <ThrowOnError extends boolean = false>(options: Options<CancelProjectData, ThrowOnError>) => (options.client ?? client).put<CancelProjectResponses, unknown, ThrowOnError>({
-    url: '/api/v1/projects/{projectId}/cancel',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const getProjectBids = <ThrowOnError extends boolean = false>(options: Options<GetProjectBidsData, ThrowOnError>) => (options.client ?? client).get<GetProjectBidsResponses, unknown, ThrowOnError>({ url: '/api/v1/projects/{projectId}/bids', ...options });
-
-export const submitBid = <ThrowOnError extends boolean = false>(options: Options<SubmitBidData, ThrowOnError>) => (options.client ?? client).post<SubmitBidResponses, unknown, ThrowOnError>({
-    url: '/api/v1/projects/{projectId}/bids',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const selectBid = <ThrowOnError extends boolean = false>(options: Options<SelectBidData, ThrowOnError>) => (options.client ?? client).put<SelectBidResponses, unknown, ThrowOnError>({ url: '/api/v1/projects/{projectId}/bids/{bidId}/select', ...options });
-
-export const getParticipationReport = <ThrowOnError extends boolean = false>(options: Options<GetParticipationReportData, ThrowOnError>) => (options.client ?? client).get<GetParticipationReportResponses, unknown, ThrowOnError>({ url: '/api/v1/projects/{projectId}/participation-report', ...options });
-
-export const markAsCompleted = <ThrowOnError extends boolean = false>(options: Options<MarkAsCompletedData, ThrowOnError>) => (options.client ?? client).put<MarkAsCompletedResponses, unknown, ThrowOnError>({ url: '/api/v1/projects/{projectId}/mark-completed', ...options });
-
-export const confirmCompletion = <ThrowOnError extends boolean = false>(options: Options<ConfirmCompletionData, ThrowOnError>) => (options.client ?? client).put<ConfirmCompletionResponses, unknown, ThrowOnError>({
-    url: '/api/v1/projects/{projectId}/confirm-completion',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const signup = <ThrowOnError extends boolean = false>(options: Options<SignupData, ThrowOnError>) => (options.client ?? client).post<SignupResponses, unknown, ThrowOnError>({
-    url: '/api/v1/design-consultancies/signup',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const getProfile = <ThrowOnError extends boolean = false>(options: Options<GetProfileData, ThrowOnError>) => (options.client ?? client).get<GetProfileResponses, unknown, ThrowOnError>({ url: '/api/v1/design-consultancies/profile/{userId}', ...options });
-
-export const updateProfile = <ThrowOnError extends boolean = false>(options: Options<UpdateProfileData, ThrowOnError>) => (options.client ?? client).put<UpdateProfileResponses, unknown, ThrowOnError>({
-    url: '/api/v1/design-consultancies/profile/{userId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Dashboard
- */
-export const getDashboardStats = <ThrowOnError extends boolean = false>(options?: Options<GetDashboardStatsData, ThrowOnError>) => (options?.client ?? client).get<GetDashboardStatsResponses, unknown, ThrowOnError>({ url: '/api/v1/design-consultancies/dashboard/stats', ...options });
-
-export const getPortfolioProjects = <ThrowOnError extends boolean = false>(options?: Options<GetPortfolioProjectsData, ThrowOnError>) => (options?.client ?? client).get<GetPortfolioProjectsResponses, unknown, ThrowOnError>({ url: '/api/v1/design-consultancies/portfolio', ...options });
-
-export const addPortfolioProject = <ThrowOnError extends boolean = false>(options: Options<AddPortfolioProjectData, ThrowOnError>) => (options.client ?? client).post<AddPortfolioProjectResponses, unknown, ThrowOnError>({
-    url: '/api/v1/design-consultancies/portfolio',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const deletePortfolioProject = <ThrowOnError extends boolean = false>(options: Options<DeletePortfolioProjectData, ThrowOnError>) => (options.client ?? client).delete<DeletePortfolioProjectResponses, unknown, ThrowOnError>({ url: '/api/v1/design-consultancies/portfolio/{projectId}', ...options });
-
-export const updatePortfolioProject = <ThrowOnError extends boolean = false>(options: Options<UpdatePortfolioProjectData, ThrowOnError>) => (options.client ?? client).put<UpdatePortfolioProjectResponses, unknown, ThrowOnError>({
-    url: '/api/v1/design-consultancies/portfolio/{projectId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const removePhoto = <ThrowOnError extends boolean = false>(options: Options<RemovePhotoData, ThrowOnError>) => (options.client ?? client).delete<RemovePhotoResponses, unknown, ThrowOnError>({ url: '/api/v1/design-consultancies/portfolio/{projectId}/photo/{photoId}', ...options });
-
-export const signup2 = <ThrowOnError extends boolean = false>(options: Options<Signup2Data, ThrowOnError>) => (options.client ?? client).post<Signup2Responses, unknown, ThrowOnError>({
-    url: '/api/v1/contractors/signup',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const getProfile2 = <ThrowOnError extends boolean = false>(options: Options<GetProfile2Data, ThrowOnError>) => (options.client ?? client).get<GetProfile2Responses, unknown, ThrowOnError>({ url: '/api/v1/contractors/profile/{userId}', ...options });
-
-export const updateProfile2 = <ThrowOnError extends boolean = false>(options: Options<UpdateProfile2Data, ThrowOnError>) => (options.client ?? client).put<UpdateProfile2Responses, unknown, ThrowOnError>({
-    url: '/api/v1/contractors/profile/{userId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Portfolio Management
- */
-export const addPortfolioProject2 = <ThrowOnError extends boolean = false>(options: Options<AddPortfolioProject2Data, ThrowOnError>) => (options.client ?? client).post<AddPortfolioProject2Responses, unknown, ThrowOnError>({
-    url: '/api/v1/contractors/portfolio',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const deletePortfolioProject2 = <ThrowOnError extends boolean = false>(options: Options<DeletePortfolioProject2Data, ThrowOnError>) => (options.client ?? client).delete<DeletePortfolioProject2Responses, unknown, ThrowOnError>({ url: '/api/v1/contractors/portfolio/{projectId}', ...options });
-
-export const updatePortfolioProject2 = <ThrowOnError extends boolean = false>(options: Options<UpdatePortfolioProject2Data, ThrowOnError>) => (options.client ?? client).put<UpdatePortfolioProject2Responses, unknown, ThrowOnError>({
-    url: '/api/v1/contractors/portfolio/{projectId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const removePhoto2 = <ThrowOnError extends boolean = false>(options: Options<RemovePhoto2Data, ThrowOnError>) => (options.client ?? client).delete<RemovePhoto2Responses, unknown, ThrowOnError>({ url: '/api/v1/contractors/portfolio/{projectId}/photo/{photoId}', ...options });
-
-/**
- * Availability Toggle
- */
-export const toggleAvailability = <ThrowOnError extends boolean = false>(options?: Options<ToggleAvailabilityData, ThrowOnError>) => (options?.client ?? client).patch<ToggleAvailabilityResponses, unknown, ThrowOnError>({ url: '/api/v1/contractors/availability', ...options });
-
-/**
- * Dashboard
- */
-export const getContractorDashboardStats = <ThrowOnError extends boolean = false>(options?: Options<GetContractorDashboardStatsData, ThrowOnError>) => (options?.client ?? client).get<GetContractorDashboardStatsResponses, unknown, ThrowOnError>({ url: '/api/v1/contractors/dashboard/stats', ...options });
-
-export const signup3 = <ThrowOnError extends boolean = false>(options: Options<Signup3Data, ThrowOnError>) => (options.client ?? client).post<Signup3Responses, unknown, ThrowOnError>({
-    url: '/api/v1/clients/signup',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const getProfile3 = <ThrowOnError extends boolean = false>(options: Options<GetProfile3Data, ThrowOnError>) => (options.client ?? client).get<GetProfile3Responses, unknown, ThrowOnError>({ url: '/api/v1/clients/profile/{userId}', ...options });
-
-export const updateProfile3 = <ThrowOnError extends boolean = false>(options: Options<UpdateProfile3Data, ThrowOnError>) => (options.client ?? client).put<UpdateProfile3Responses, unknown, ThrowOnError>({
-    url: '/api/v1/clients/profile/{userId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Dashboard Analytics
- */
-export const getDashboardStats2 = <ThrowOnError extends boolean = false>(options?: Options<GetDashboardStats2Data, ThrowOnError>) => (options?.client ?? client).get<GetDashboardStats2Responses, unknown, ThrowOnError>({ url: '/api/v1/clients/dashboard/stats', ...options });
-
-/**
- * Reviews
- */
-export const addReview = <ThrowOnError extends boolean = false>(options: Options<AddReviewData, ThrowOnError>) => (options.client ?? client).post<AddReviewResponses, unknown, ThrowOnError>({
-    url: '/api/v1/clients/review',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Get bids for the logged-in user
- *
- * Access:
- * - Contractor
- * - Design Consultancy
- */
-export const getMyBids = <ThrowOnError extends boolean = false>(options?: Options<GetMyBidsData, ThrowOnError>) => (options?.client ?? client).get<GetMyBidsResponses, unknown, ThrowOnError>({ url: '/api/v1/bids/my-bids', ...options });
-
-/**
- * Get bids by contractorId
- *
- * Access:
- * - Contractor
- * - Agent
- * - Admin
- */
-export const getBidsByContractor = <ThrowOnError extends boolean = false>(options: Options<GetBidsByContractorData, ThrowOnError>) => (options.client ?? client).get<GetBidsByContractorResponses, unknown, ThrowOnError>({ url: '/api/v1/bids/{contractorId}', ...options });
-
-export const rejectBid = <ThrowOnError extends boolean = false>(options: Options<RejectBidData, ThrowOnError>) => (options.client ?? client).post<RejectBidResponses, unknown, ThrowOnError>({
-    url: '/api/v1/bids/reject/{bidId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Create agent (ADMIN only)
- */
-export const createAgent = <ThrowOnError extends boolean = false>(options: Options<CreateAgentData, ThrowOnError>) => (options.client ?? client).post<CreateAgentResponses, unknown, ThrowOnError>({
-    url: '/api/v1/agents/signup',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Get all agents (ADMIN only)
- */
-export const getAgents = <ThrowOnError extends boolean = false>(options?: Options<GetAgentsData, ThrowOnError>) => (options?.client ?? client).get<GetAgentsResponses, unknown, ThrowOnError>({ url: '/api/v1/agents', ...options });
-
-/**
- * Delete agent by ID (ADMIN only)
- */
-export const deleteAgent = <ThrowOnError extends boolean = false>(options: Options<DeleteAgentData, ThrowOnError>) => (options.client ?? client).delete<DeleteAgentResponses, unknown, ThrowOnError>({ url: '/api/v1/agents/{agentId}', ...options });
-
-/**
- * Get agent by ID (ADMIN only)
- */
-export const getAgent = <ThrowOnError extends boolean = false>(options: Options<GetAgentData, ThrowOnError>) => (options.client ?? client).get<GetAgentResponses, unknown, ThrowOnError>({ url: '/api/v1/agents/{agentId}', ...options });
-
-/**
- * Update agent by ID (ADMIN only)
- */
-export const updateAgent = <ThrowOnError extends boolean = false>(options: Options<UpdateAgentData, ThrowOnError>) => (options.client ?? client).put<UpdateAgentResponses, unknown, ThrowOnError>({
-    url: '/api/v1/agents/{agentId}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Get agent profile
- *
- * - Agent → can access only own profile
- * - Admin → can access any agent profile
- */
-export const getProfile4 = <ThrowOnError extends boolean = false>(options: Options<GetProfile4Data, ThrowOnError>) => (options.client ?? client).get<GetProfile4Responses, unknown, ThrowOnError>({ url: '/api/v1/agents/{agentId}/profile', ...options });
-
-/**
- * Get dashboard stats (AGENT only)
- */
-export const getDashboardStats3 = <ThrowOnError extends boolean = false>(options?: Options<GetDashboardStats3Data, ThrowOnError>) => (options?.client ?? client).get<GetDashboardStats3Responses, unknown, ThrowOnError>({ url: '/api/v1/agents/dashboard/stats', ...options });
-
-export const getBlogs = <ThrowOnError extends boolean = false>(options?: Options<GetBlogsData, ThrowOnError>) => (options?.client ?? client).get<GetBlogsResponses, unknown, ThrowOnError>({ url: '/api/v1/admin/blogs', ...options });
-
-export const createBlog = <ThrowOnError extends boolean = false>(options: Options<CreateBlogData, ThrowOnError>) => (options.client ?? client).post<CreateBlogResponses, unknown, ThrowOnError>({
-    url: '/api/v1/admin/blogs',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-export const deleteBlog = <ThrowOnError extends boolean = false>(options: Options<DeleteBlogData, ThrowOnError>) => (options.client ?? client).delete<DeleteBlogResponses, unknown, ThrowOnError>({ url: '/api/v1/admin/blogs/{id}', ...options });
-
-export const updateBlog = <ThrowOnError extends boolean = false>(options: Options<UpdateBlogData, ThrowOnError>) => (options.client ?? client).put<UpdateBlogResponses, unknown, ThrowOnError>({
-    url: '/api/v1/admin/blogs/{id}',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Get platform dashboard statistics
- */
-export const getDashboard = <ThrowOnError extends boolean = false>(options?: Options<GetDashboardData, ThrowOnError>) => (options?.client ?? client).get<GetDashboardResponses, unknown, ThrowOnError>({ url: '/api/v1/admin/dashboard', ...options });
-
-/**
- * Get platform analytics overview
- */
-export const getAnalyticsOverview = <ThrowOnError extends boolean = false>(options?: Options<GetAnalyticsOverviewData, ThrowOnError>) => (options?.client ?? client).get<GetAnalyticsOverviewResponses, unknown, ThrowOnError>({ url: '/api/v1/admin/analytics-overview', ...options });
-
-/**
- * Get all users
- */
-export const getAllUsers = <ThrowOnError extends boolean = false>(options?: Options<GetAllUsersData, ThrowOnError>) => (options?.client ?? client).get<GetAllUsersResponses, unknown, ThrowOnError>({ url: '/api/v1/admin/users', ...options });
