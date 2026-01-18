@@ -2,6 +2,7 @@ import type { RouteContextType } from "@/main";
 import { DashboardLayout } from "@/ui/layouts/DashboardLayout";
 import {
   createFileRoute,
+  Navigate,
   Outlet,
   useRouteContext,
 } from "@tanstack/react-router";
@@ -16,6 +17,10 @@ function RouteComponent() {
     from: "__root__",
   }) as RouteContextType;
 
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
 
   return (

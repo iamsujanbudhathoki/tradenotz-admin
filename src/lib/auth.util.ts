@@ -23,7 +23,7 @@ export function getValidUser(): DecodedUser | null {
       return null;
     }
 
-    if (!decoded.userRole) {
+    if (!decoded.id) {
       localStorage.removeItem("token");
       return null;
     }

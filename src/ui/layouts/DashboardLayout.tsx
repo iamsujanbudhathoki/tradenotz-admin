@@ -34,6 +34,7 @@ import {
 import { ArrowRight, Loader2, X } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
+import { Loader } from "../atoms/loader";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -44,7 +45,6 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   // @ts-ignore
   const { user: contextUser, } = useRouteContext({
     from: "__root__",
@@ -52,6 +52,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
   const {
     fullUserDetails,
+    isLoading
   } = useAuth();
   // @ts-ignore
   const logoutMutation = useLogoutMutation();
@@ -79,13 +80,13 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     );
   };
 
-  // if (!contextUser || isLoadingUser) {
-  //   return (
-  //     <div className="flex items-center justify-center min-h-screen">
-  //       <Loader />
-  //     </div>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <DashboardContext.Provider value={{ title, setTitle }}>
@@ -214,17 +215,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                               Hi, {fullUserDetails?.fullName}!
                             </h3>
 
-                            {/* Manage Account Button */}
-                            <Button
-                              variant="outline"
-                              className="w-full border-gray-300"
-                              onClick={() => {
-                                setShowUserMenu(false);
-                                navigate({ to: "/dashboard/profile" });
-                              }}
-                            >
-                              Manage your Account
-                            </Button>
+                        
 
                             {/* Bottom Buttons */}
                             <div className="flex gap-2 w-full pt-2 border-t">
