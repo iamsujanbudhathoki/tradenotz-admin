@@ -14,6 +14,8 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/ui/atoms/dialog";
+import { Input } from "@/ui/atoms/input";
+import { Textarea } from "@/ui/atoms/textarea";
 import { Label } from "@/ui/atoms/label";
 import {
     Edit,
@@ -196,48 +198,50 @@ export function CoursesPage() {
             {/* Courses Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {courses.map((course) => (
-                    <Card key={course.id} className="shadow-card hover:shadow-card-hover transition-smooth">
-                        <CardHeader>
-                            <div className="flex items-start justify-between">
-                                <div className="flex items-center gap-2">
-                                    <PlaySquare className="w-5 h-5 text-primary" />
-                                    <CardTitle className="text-lg">{course.title}</CardTitle>
+                    <Card key={course.id} className="group shadow-sm hover:shadow-card-hover transition-all duration-300 hover:scale-[1.01] hover:-translate-y-1 bg-card/50 backdrop-blur-sm border-border/60">
+                        <CardHeader className="pb-3">
+                            <div className="flex items-start justify-between gap-4">
+                                <div className="flex items-center gap-3 flex-1 min-w-0">
+                                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                        <PlaySquare className="w-5 h-5 text-primary" />
+                                    </div>
+                                    <CardTitle className="text-lg line-clamp-1 group-hover:text-primary transition-colors">{course.title}</CardTitle>
                                 </div>
                                 <span
-                                    className={`px-2 py-1 rounded-full text-xs font-medium ${course.isPublished
-                                        ? "status-success"
-                                        : "status-neutral"
+                                    className={`px-2.5 py-0.5 rounded-full text-xs font-medium border ${course.isPublished
+                                        ? "bg-green-50 text-green-700 border-green-200"
+                                        : "bg-slate-50 text-slate-700 border-slate-200"
                                         }`}
                                 >
                                     {course.isPublished ? "Published" : "Draft"}
                                 </span>
                             </div>
-                            <CardDescription className="line-clamp-2">
+                            <CardDescription className="line-clamp-2 mt-2 text-muted-foreground/80">
                                 {course.description}
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-4">
-                            <div className="flex items-center justify-between text-sm text-muted-foreground">
+                        <CardContent className="space-y-4 pt-0">
+                            <div className="flex items-center justify-between text-xs font-medium text-muted-foreground bg-secondary/30 rounded-md p-2">
                                 <span>{course.lessons.length} lessons</span>
                                 <span>Updated {new Date(course.updatedAt).toLocaleDateString()}</span>
                             </div>
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 pt-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className="flex-1"
+                                    className="flex-1 hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-colors"
                                     onClick={() => openEditDialog(course)}
                                 >
-                                    <Edit className="w-4 h-4 mr-1" />
+                                    <Edit className="w-4 h-4 mr-2" />
                                     Edit
                                 </Button>
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className="text-destructive hover:text-destructive flex-1"
+                                    className="text-destructive hover:text-destructive hover:border-destructive/50 hover:bg-destructive/5 flex-1 transition-colors"
                                     onClick={() => openDeleteDialog(course)}
                                 >
-                                    <Trash2 className="w-4 h-4 mr-1" />
+                                    <Trash2 className="w-4 h-4 mr-2" />
                                     Delete
                                 </Button>
                             </div>
@@ -272,10 +276,9 @@ export function CoursesPage() {
                     <div className="space-y-4 py-4">
                         <div className="space-y-2">
                             <Label htmlFor="title" required>Course Title</Label>
-                            <input
+                            <Input
                                 id="title"
                                 type="text"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 placeholder="e.g., Trading Basics for Beginners"
                                 value={formData.title}
                                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
@@ -283,9 +286,9 @@ export function CoursesPage() {
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="description" required>Description</Label>
-                            <textarea
+                            <Textarea
                                 id="description"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[100px]"
+                                className="min-h-[100px]"
                                 placeholder="Describe what students will learn..."
                                 value={formData.description}
                                 onChange={(e) =>
@@ -295,10 +298,9 @@ export function CoursesPage() {
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="thumbnail">Thumbnail URL (optional)</Label>
-                            <input
+                            <Input
                                 id="thumbnail"
                                 type="url"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 placeholder="https://example.com/image.jpg"
                                 value={formData.thumbnail}
                                 onChange={(e) =>
@@ -344,19 +346,18 @@ export function CoursesPage() {
                     <div className="space-y-4 py-4">
                         <div className="space-y-2">
                             <Label htmlFor="edit-title" required>Course Title</Label>
-                            <input
+                            <Input
                                 id="edit-title"
                                 type="text"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 value={formData.title}
                                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                             />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="edit-description" required>Description</Label>
-                            <textarea
+                            <Textarea
                                 id="edit-description"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[100px]"
+                                className="min-h-[100px]"
                                 value={formData.description}
                                 onChange={(e) =>
                                     setFormData({ ...formData, description: e.target.value })
@@ -365,10 +366,9 @@ export function CoursesPage() {
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="edit-thumbnail">Thumbnail URL</Label>
-                            <input
+                            <Input
                                 id="edit-thumbnail"
                                 type="url"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 value={formData.thumbnail}
                                 onChange={(e) =>
                                     setFormData({ ...formData, thumbnail: e.target.value })

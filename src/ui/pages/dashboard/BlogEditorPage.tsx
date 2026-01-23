@@ -14,6 +14,8 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/ui/atoms/dialog";
+import { Input } from "@/ui/atoms/input";
+import { Textarea } from "@/ui/atoms/textarea";
 import { Label } from "@/ui/atoms/label";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import {
@@ -165,10 +167,10 @@ export function BlogEditorPage() {
                             <Label htmlFor="title" required>
                                 Blog Title
                             </Label>
-                            <input
+                            <Input
                                 id="title"
                                 type="text"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-lg font-medium"
+                                className="text-lg font-medium"
                                 placeholder="e.g., Understanding Support and Resistance"
                                 value={formData.title}
                                 onChange={(e) => {
@@ -185,10 +187,10 @@ export function BlogEditorPage() {
                             <Label htmlFor="slug" required>
                                 URL Slug
                             </Label>
-                            <input
+                            <Input
                                 id="slug"
                                 type="text"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-mono text-sm"
+                                className="font-mono text-sm"
                                 placeholder="understanding-support-resistance"
                                 value={formData.slug}
                                 onChange={(e) =>
@@ -201,9 +203,9 @@ export function BlogEditorPage() {
                             <Label htmlFor="excerpt" required>
                                 Excerpt
                             </Label>
-                            <textarea
+                            <Textarea
                                 id="excerpt"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[80px]"
+                                className="min-h-[80px]"
                                 placeholder="Brief summary of your blog post..."
                                 value={formData.excerpt}
                                 onChange={(e) =>
@@ -214,10 +216,9 @@ export function BlogEditorPage() {
 
                         <div className="space-y-2">
                             <Label htmlFor="tags">Tags (comma-separated)</Label>
-                            <input
+                            <Input
                                 id="tags"
                                 type="text"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 placeholder="e.g., basics, strategy, risk-management"
                                 value={formData.tags}
                                 onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
@@ -226,10 +227,9 @@ export function BlogEditorPage() {
 
                         <div className="space-y-2">
                             <Label htmlFor="thumbnail">Thumbnail URL (optional)</Label>
-                            <input
+                            <Input
                                 id="thumbnail"
                                 type="url"
-                                className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 placeholder="https://example.com/image.jpg"
                                 value={formData.thumbnail}
                                 onChange={(e) =>
@@ -251,9 +251,9 @@ export function BlogEditorPage() {
                         <Label htmlFor="content" required>
                             Article Content (Markdown supported)
                         </Label>
-                        <textarea
+                        <Textarea
                             id="content"
-                            className="w-full px-4 py-3 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[500px] font-mono text-sm"
+                            className="min-h-[500px] font-mono text-sm"
                             placeholder="# Your Article Title&#10;&#10;Write your article here using markdown formatting...&#10;&#10;## Subheading&#10;&#10;Your content with **bold**, *italic*, and [links](https://example.com)"
                             value={formData.content}
                             onChange={(e) =>

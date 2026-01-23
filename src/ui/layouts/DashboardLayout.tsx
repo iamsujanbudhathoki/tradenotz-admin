@@ -34,7 +34,7 @@ import {
 import { ArrowRight, Loader2, X } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
-import { Loader } from "../atoms/loader";
+import { GlobalLoader } from "../molecules/GlobalLoader";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -44,6 +44,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [title, setTitle] = useState("Dashboard");
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
   // @ts-ignore
   const { user: contextUser, } = useRouteContext({
@@ -69,12 +70,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       {
         onSuccess: () => {
           localStorage.removeItem("token");
-          window.location.href = "/login";
+          navigate({ to: "/login" });
         },
         onError: (error: any) => {
           console.error("Logout error:", error);
           localStorage.removeItem("token");
-          window.location.href = "/login";
+          navigate({ to: "/login" });
         },
       }
     );
@@ -82,9 +83,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader />
-      </div>
+      <GlobalLoader />
     );
   }
 
@@ -215,7 +214,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                               Hi, {fullUserDetails?.fullName}!
                             </h3>
 
-                        
+
 
                             {/* Bottom Buttons */}
                             <div className="flex gap-2 w-full pt-2 border-t">

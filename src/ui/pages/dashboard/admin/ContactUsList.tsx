@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getAllMessagesOptions, deleteMessageMutation } from "@/api/@tanstack/react-query.gen";
 import { Mail, Search, Eye, Trash2, MessageSquare } from "lucide-react";
@@ -102,11 +102,7 @@ const ContactUsList = () => {
         setIsDetailsOpen(true);
     };
 
-    // Messages are now filtered by the backend
-    const filteredMessages = useMemo(() => {
-        if (!messagesResponse?.data) return [];
-        return messagesResponse.data as ContactUs[];
-    }, [messagesResponse]);
+
 
     if (error) {
         return (
@@ -119,15 +115,15 @@ const ContactUsList = () => {
     const getStatusBadge = (status: ContactUsStatus) => {
         switch (status) {
             case "PENDING":
-                return <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-200">Pending</Badge>;
+                return <Badge variant="outline" className="status-warning border bg-amber-50/50">Pending</Badge>;
             case "READ":
-                return <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">Read</Badge>;
+                return <Badge variant="outline" className="status-info border bg-blue-50/50">Read</Badge>;
             case "RESPONDED":
-                return <Badge variant="outline" className="bg-emerald-50 text-emerald-700 border-emerald-200">Responded</Badge>;
+                return <Badge variant="outline" className="status-success border bg-green-50/50">Responded</Badge>;
             case "ARCHIVED":
-                return <Badge variant="secondary">Archived</Badge>;
+                return <Badge variant="secondary" className="status-neutral border bg-slate-50/50">Archived</Badge>;
             default:
-                return <Badge>{status}</Badge>;
+                return <Badge variant="outline">{status}</Badge>;
         }
     };
 
@@ -168,35 +164,35 @@ const ContactUsList = () => {
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-b bg-muted/30">
-                                    <th className="py-4 px-4 font-semibold text-muted-foreground">Sender</th>
-                                    <th className="py-4 px-4 font-semibold text-muted-foreground">Subject</th>
-                                    <th className="py-4 px-4 font-semibold text-muted-foreground">Status</th>
-                                    <th className="py-4 px-4 font-semibold text-muted-foreground">Date</th>
-                                    <th className="py-4 px-4 font-semibold text-muted-foreground text-center">Actions</th>
+                                <tr className="border-b bg-muted/40">
+                                    <th className="py-4 px-6 font-semibold text-xs uppercase tracking-wider text-muted-foreground">Sender</th>
+                                    <th className="py-4 px-6 font-semibold text-xs uppercase tracking-wider text-muted-foreground">Subject</th>
+                                    <th className="py-4 px-6 font-semibold text-xs uppercase tracking-wider text-muted-foreground">Status</th>
+                                    <th className="py-4 px-6 font-semibold text-xs uppercase tracking-wider text-muted-foreground">Date</th>
+                                    <th className="py-4 px-6 font-semibold text-xs uppercase tracking-wider text-muted-foreground text-center">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="divide-y divide-border">
                                 {isLoading ? (
                                     // Skeleton Loading State
                                     Array.from({ length: 5 }).map((_, index) => (
-                                        <tr key={index} className="border-b">
-                                            <td className="py-4 px-4">
+                                        <tr key={index}>
+                                            <td className="py-4 px-6">
                                                 <div className="space-y-2">
                                                     <Skeleton className="h-4 w-32" />
                                                     <Skeleton className="h-3 w-40" />
                                                 </div>
                                             </td>
-                                            <td className="py-4 px-4">
+                                            <td className="py-4 px-6">
                                                 <Skeleton className="h-4 w-48" />
                                             </td>
-                                            <td className="py-4 px-4">
+                                            <td className="py-4 px-6">
                                                 <Skeleton className="h-6 w-20 rounded-full" />
                                             </td>
-                                            <td className="py-4 px-4">
+                                            <td className="py-4 px-6">
                                                 <Skeleton className="h-4 w-24" />
                                             </td>
-                                            <td className="py-4 px-4">
+                                            <td className="py-4 px-6">
                                                 <div className="flex justify-center gap-2">
                                                     <Skeleton className="h-8 w-8 rounded-md" />
                                                     <Skeleton className="h-8 w-8 rounded-md" />
@@ -206,10 +202,15 @@ const ContactUsList = () => {
                                     ))
                                 ) : messages.length === 0 ? (
                                     <tr>
-                                        <td colSpan={5} className="py-12 text-center text-muted-foreground">
-                                            <div className="flex flex-col items-center gap-2">
-                                                <MessageSquare className="w-8 h-8 opacity-20" />
-                                                <p>No contact messages found.</p>
+                                        <td colSpan={5} className="py-16 text-center">
+                                            <div className="flex flex-col items-center gap-3">
+                                                <div className="w-16 h-16 rounded-full bg-muted/30 flex items-center justify-center">
+                                                    <MessageSquare className="w-8 h-8 text-muted-foreground/50" />
+                                                </div>
+                                                <div>
+                                                    <p className="text-lg font-medium text-foreground">No messages found</p>
+                                                    <p className="text-sm text-muted-foreground">Try adjusting your search or filters</p>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
@@ -217,54 +218,54 @@ const ContactUsList = () => {
                                     messages.map((contact: ContactUs) => (
                                         <tr
                                             key={contact.id}
-                                            className="border-b hover:bg-muted/10 transition-colors cursor-pointer"
+                                            className="group hover:bg-muted/30 transition-all duration-200 cursor-pointer"
                                             onClick={() => handleViewDetails(contact)}
                                         >
-                                            <td className="py-4 px-4">
-                                                <div className="flex flex-col">
-                                                    <span className="font-medium text-foreground">{contact.name}</span>
-                                                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                            <td className="py-4 px-6">
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="font-semibold text-foreground group-hover:text-primary transition-colors">{contact.name}</span>
+                                                    <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                                                         <Mail className="w-3 h-3" /> {contact.email}
                                                     </span>
                                                 </div>
                                             </td>
-                                            <td className="py-4 px-4">
-                                                <span className="text-sm font-medium line-clamp-1 truncate max-w-[200px]">
+                                            <td className="py-4 px-6">
+                                                <span className="text-sm font-medium line-clamp-1 truncate max-w-[250px] text-muted-foreground group-hover:text-foreground transition-colors">
                                                     {contact.subject}
                                                 </span>
                                             </td>
-                                            <td className="py-4 px-4">
+                                            <td className="py-4 px-6">
                                                 {getStatusBadge(contact.status)}
                                             </td>
-                                            <td className="py-4 px-4 text-muted-foreground text-sm">
+                                            <td className="py-4 px-6 text-muted-foreground text-sm font-medium">
                                                 {formatDate(contact.createdAt)}
                                             </td>
-                                            <td className="py-4 px-4">
-                                                <div className="flex items-center justify-center gap-2">
+                                            <td className="py-4 px-6">
+                                                <div className="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                                     <Button
                                                         variant="ghost"
-                                                        size="sm"
+                                                        size="icon"
                                                         onClick={(e) => {
                                                             e.stopPropagation();
                                                             handleViewDetails(contact);
                                                         }}
-                                                        className="h-8 px-2 hover:bg-blue-50 hover:text-blue-600"
+                                                        className="h-8 w-8 hover:bg-primary/10 hover:text-primary rounded-full transition-colors"
                                                         title="View Details"
                                                     >
-                                                        <Eye className="w-4 h-4 mr-1" />
+                                                        <Eye className="w-4 h-4" />
                                                     </Button>
                                                     <Button
                                                         variant="ghost"
-                                                        size="sm"
+                                                        size="icon"
                                                         onClick={(e) => {
                                                             e.stopPropagation();
                                                             handleDelete(contact.id);
                                                         }}
-                                                        className="h-8 px-2 hover:bg-red-50 hover:text-red-600"
+                                                        className="h-8 w-8 hover:bg-destructive/10 hover:text-destructive rounded-full transition-colors"
                                                         disabled={deleteMessage.isPending}
                                                         title="Delete Contact Request"
                                                     >
-                                                        <Trash2 className="w-4 h-4 mr-1" />
+                                                        <Trash2 className="w-4 h-4" />
                                                     </Button>
                                                 </div>
                                             </td>

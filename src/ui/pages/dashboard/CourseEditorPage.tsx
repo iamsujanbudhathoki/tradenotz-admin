@@ -14,6 +14,8 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/ui/atoms/dialog";
+import { Input } from "@/ui/atoms/input";
+import { Textarea } from "@/ui/atoms/textarea";
 import { Label } from "@/ui/atoms/label";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import {
@@ -259,10 +261,10 @@ export function CourseEditorPage() {
                         <Label htmlFor="title" required>
                             Course Title
                         </Label>
-                        <input
+                        <Input
                             id="title"
                             type="text"
-                            className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-lg font-medium"
+                            className="text-lg font-medium"
                             placeholder="e.g., Trading Fundamentals"
                             value={formData.title}
                             onChange={(e) =>
@@ -275,9 +277,9 @@ export function CourseEditorPage() {
                         <Label htmlFor="description" required>
                             Description
                         </Label>
-                        <textarea
+                        <Textarea
                             id="description"
-                            className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[100px]"
+                            className="min-h-[100px]"
                             placeholder="What will students learn in this course?"
                             value={formData.description}
                             onChange={(e) =>
@@ -288,10 +290,9 @@ export function CourseEditorPage() {
 
                     <div className="space-y-2">
                         <Label htmlFor="thumbnail">Thumbnail URL (optional)</Label>
-                        <input
+                        <Input
                             id="thumbnail"
                             type="url"
-                            className="w-full px-4 py-2.5 border border-border bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                             placeholder="https://example.com/image.jpg"
                             value={formData.thumbnail}
                             onChange={(e) =>
@@ -376,9 +377,9 @@ export function CourseEditorPage() {
                                                                     #{index + 1}
                                                                 </span>
                                                             </button>
-                                                            <input
+                                                            <Input
                                                                 type="text"
-                                                                className="flex-1 px-3 py-2 border border-border bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-semibold text-base"
+                                                                className="font-semibold text-base"
                                                                 placeholder="Lesson title..."
                                                                 value={lesson.title}
                                                                 onChange={(e) =>
@@ -429,10 +430,10 @@ export function CourseEditorPage() {
                                                                 >
                                                                     Slug (URL)
                                                                 </Label>
-                                                                <input
+                                                                <Input
                                                                     id={`lesson-slug-${lesson.id}`}
                                                                     type="text"
-                                                                    className="w-full px-3 py-1.5 border border-border bg-card rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-mono text-xs"
+                                                                    className="font-mono text-xs h-8"
                                                                     placeholder="lesson-slug"
                                                                     value={lesson.slug}
                                                                     onChange={(e) =>
@@ -448,10 +449,10 @@ export function CourseEditorPage() {
                                                                 >
                                                                     Duration (optional)
                                                                 </Label>
-                                                                <input
+                                                                <Input
                                                                     id={`lesson-duration-${lesson.id}`}
                                                                     type="text"
-                                                                    className="w-full px-3 py-1.5 border border-border bg-card rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                                                    className="text-sm h-8"
                                                                     placeholder="e.g., 15 min"
                                                                     value={lesson.duration || ""}
                                                                     onChange={(e) =>
@@ -471,7 +472,7 @@ export function CourseEditorPage() {
                                                                             !lesson.isPublished
                                                                         )
                                                                     }
-                                                                    className={`w-full px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${lesson.isPublished
+                                                                    className={`w-full px-3 py-1.5 rounded-md text-sm font-medium transition-colors h-8 flex items-center justify-center ${lesson.isPublished
                                                                         ? "bg-green-100 text-green-700 hover:bg-green-200"
                                                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                                                         }`}
@@ -493,9 +494,9 @@ export function CourseEditorPage() {
                                                     <Label htmlFor={`lesson-excerpt-${lesson.id}`}>
                                                         Lesson Excerpt
                                                     </Label>
-                                                    <textarea
+                                                    <Textarea
                                                         id={`lesson-excerpt-${lesson.id}`}
-                                                        className="w-full px-3 py-2 border border-border bg-card rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[60px] text-sm"
+                                                        className="min-h-[60px] text-sm"
                                                         placeholder="Brief description of what students will learn in this lesson..."
                                                         value={lesson.excerpt}
                                                         onChange={(e) =>
@@ -514,9 +515,9 @@ export function CourseEditorPage() {
                                                             {lesson.content.length} characters
                                                         </span>
                                                     </div>
-                                                    <textarea
+                                                    <Textarea
                                                         id={`lesson-content-${lesson.id}`}
-                                                        className="w-full px-4 py-3 border border-border bg-card rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[300px] font-mono text-sm leading-relaxed"
+                                                        className="min-h-[300px] font-mono text-sm leading-relaxed"
                                                         placeholder="# Lesson Title&#10;&#10;Write your detailed lesson content here using markdown...&#10;&#10;## Section 1&#10;Content...&#10;&#10;## Section 2&#10;More content..."
                                                         value={lesson.content}
                                                         onChange={(e) =>

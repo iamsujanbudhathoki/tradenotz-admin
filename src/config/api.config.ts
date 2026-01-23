@@ -26,6 +26,12 @@ export const APIConfig = () => {
 
 /* ---------- REQUEST INTERCEPTOR ---------- */
 client.interceptors.request.use(async (request: Request) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    request.headers.set("Authorization", `Bearer ${token}`);
+  }
+
   const cloned = request.clone();
   const bodyText =
     cloned.method !== "GET" && cloned.method !== "HEAD"

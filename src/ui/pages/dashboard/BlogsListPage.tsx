@@ -11,7 +11,6 @@ import { Link } from "@tanstack/react-router";
 import {
     BookOpen,
     Edit,
-    Link2,
     Plus,
     Trash2,
 } from "lucide-react";
@@ -114,73 +113,62 @@ export function BlogsListPage() {
                 {blogs.map((blog) => (
                     <Card
                         key={blog.id}
-                        className="shadow-card hover:shadow-card-hover transition-smooth"
+                        className="group shadow-sm hover:shadow-card-hover transition-all duration-300 hover:scale-[1.01] hover:-translate-y-1 bg-card/50 backdrop-blur-sm border-border/60"
                     >
-                        <CardHeader>
-                            <div className="flex items-start justify-between">
-                                <div className="flex items-center gap-2 flex-1">
-                                    <BookOpen className="w-5 h-5 text-primary flex-shrink-0" />
-                                    <CardTitle className="text-lg line-clamp-1">
+                        <CardHeader className="pb-3">
+                            <div className="flex items-start justify-between gap-4">
+                                <div className="flex items-center gap-3 flex-1 min-w-0">
+                                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                        <BookOpen className="w-5 h-5 text-primary" />
+                                    </div>
+                                    <CardTitle className="text-lg line-clamp-1 group-hover:text-primary transition-colors">
                                         {blog.title}
                                     </CardTitle>
                                 </div>
                                 <span
-                                    className={`px-2 py-1 rounded-full text-xs font-medium ml-2 ${blog.isPublished ? "status-success" : "status-neutral"
+                                    className={`px-2.5 py-0.5 rounded-full text-xs font-medium border ${blog.isPublished
+                                        ? "bg-green-50 text-green-700 border-green-200"
+                                        : "bg-slate-50 text-slate-700 border-slate-200"
                                         }`}
                                 >
                                     {blog.isPublished ? "Published" : "Draft"}
                                 </span>
                             </div>
-                            <CardDescription className="line-clamp-2">
+                            <CardDescription className="line-clamp-2 mt-2 text-muted-foreground/80">
                                 {blog.excerpt}
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-4">
+                        <CardContent className="space-y-4 pt-0">
                             {/* Tags */}
-                            {blog.tags.length > 0 && (
-                                <div className="flex flex-wrap gap-2">
-                                    {blog.tags.map((tag, index) => (
-                                        <span
-                                            key={index}
-                                            className="px-2 py-1 bg-muted text-muted-foreground rounded text-xs"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-
-                            {/* Metadata */}
-                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                {blog.references.length > 0 && (
-                                    <span className="flex items-center gap-1">
-                                        <Link2 className="w-3 h-3" />
-                                        {blog.references.length} refs
+                            <div className="flex flex-wrap gap-2 min-h-[1.5rem]">
+                                {blog.tags.map((tag, index) => (
+                                    <span
+                                        key={index}
+                                        className="px-2 py-0.5 bg-secondary/50 text-secondary-foreground rounded-md text-[10px] uppercase tracking-wider font-medium border border-border/50"
+                                    >
+                                        {tag}
                                     </span>
-                                )}
-                                <span className="ml-auto">
-                                    {new Date(blog.updatedAt).toLocaleDateString()}
-                                </span>
+                                ))}
                             </div>
 
                             {/* Actions */}
-                            <div className="flex gap-2 pt-2 border-t border-border">
+                            <div className="flex gap-2 pt-4 border-t border-border/50 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
                                 <Link
                                     to={`/dashboard/blogs/${blog.id}/edit`}
                                     className="flex-1"
                                 >
-                                    <Button variant="outline" size="sm" className="w-full">
-                                        <Edit className="w-4 h-4 mr-1" />
+                                    <Button variant="outline" size="sm" className="w-full hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-colors">
+                                        <Edit className="w-4 h-4 mr-2" />
                                         Edit
                                     </Button>
                                 </Link>
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className="text-destructive hover:text-destructive flex-1"
+                                    className="text-destructive hover:text-destructive hover:border-destructive/50 hover:bg-destructive/5 flex-1 transition-colors"
                                     onClick={() => handleDelete(blog.id)}
                                 >
-                                    <Trash2 className="w-4 h-4 mr-1" />
+                                    <Trash2 className="w-4 h-4 mr-2" />
                                     Delete
                                 </Button>
                             </div>
